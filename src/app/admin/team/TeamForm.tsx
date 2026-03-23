@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Save, X, Upload } from 'lucide-react';
+import { Save, X, Upload, Users, Settings, Camera } from 'lucide-react';
 import { saveMember } from './actions';
 import styles from '../projects/ProjectForm.module.css';
 
@@ -67,7 +67,7 @@ export default function TeamForm({ initialData }: TeamFormProps) {
         <form onSubmit={handleSubmit} className={styles.form}>
             <div className={styles.main}>
                 <section className={styles.section}>
-                    <h2>Informations du Membre</h2>
+                    <h2><Users size={20} /> Informations du Membre</h2>
                     <div className={styles.grid}>
                         <div className={styles.inputGroup}>
                             <label>Nom complet</label>
@@ -98,7 +98,7 @@ export default function TeamForm({ initialData }: TeamFormProps) {
             <aside className={styles.aside}>
                 <div className={styles.sticky}>
                     <div className={styles.card}>
-                        <h3>Affichage</h3>
+                        <h3><Settings size={16} /> Affichage</h3>
                         <div className={styles.inputGroup}>
                             <label>Ordre d&apos;affichage</label>
                             <input type="number" name="display_order" value={formData.display_order} onChange={handleChange} />
@@ -114,7 +114,7 @@ export default function TeamForm({ initialData }: TeamFormProps) {
                     </div>
 
                     <div className={styles.card} style={{ marginTop: '20px' }}>
-                        <h3>Photo de Profil</h3>
+                        <h3><Camera size={16} /> Photo de Profil</h3>
                         <div className={styles.uploadArea} style={{ padding: '20px', position: 'relative' }}>
                             <Upload size={24} />
                             <p style={{ fontSize: '0.8rem' }}>Ajouter une photo</p>

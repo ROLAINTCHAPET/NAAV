@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Save, X, Upload } from 'lucide-react';
+import { Save, X, Upload, FileText, Send, Image as ImageIcon } from 'lucide-react';
 import { saveArticle } from './actions';
 import styles from '../projects/ProjectForm.module.css';
 
@@ -65,7 +65,7 @@ export default function BlogForm({ initialData }: BlogFormProps) {
         <form onSubmit={handleSubmit} className={styles.form}>
             <div className={styles.main}>
                 <section className={styles.section}>
-                    <h2>Contenu de l&apos;Article</h2>
+                    <h2><FileText size={20} /> Contenu de l&apos;Article</h2>
                     <div className={styles.inputGroup}>
                         <label>Titre de l&apos;Article</label>
                         <input name="title" value={formData.title} onChange={handleChange} required />
@@ -84,7 +84,7 @@ export default function BlogForm({ initialData }: BlogFormProps) {
             <aside className={styles.aside}>
                 <div className={styles.sticky}>
                     <div className={styles.card}>
-                        <h3>Publication</h3>
+                        <h3><Send size={16} /> Publication</h3>
                         <div className={styles.inputGroup}>
                             <label>Statut</label>
                             <select name="status" value={formData.status} onChange={handleChange}>
@@ -103,7 +103,7 @@ export default function BlogForm({ initialData }: BlogFormProps) {
                     </div>
 
                     <div className={styles.card} style={{ marginTop: '20px' }}>
-                        <h3>Image de Couverture</h3>
+                        <h3><ImageIcon size={16} /> Image de Couverture</h3>
                         <div className={styles.uploadArea} style={{ padding: '20px', position: 'relative' }}>
                             <Upload size={24} />
                             <p style={{ fontSize: '0.8rem' }}>Ajouter une image</p>
