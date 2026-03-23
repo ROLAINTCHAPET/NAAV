@@ -141,9 +141,23 @@
     letter-spacing: 0.1em;
 }
 
+.desktopToggle {
+    margin-left: 20px;
+}
+
+.mobileActions {
+    display: none;
+    align-items: center;
+    gap: 15px;
+}
+
 @media (max-width: 1024px) {
     .navLinks {
         display: none;
+    }
+
+    .mobileActions {
+        display: flex;
     }
 
     .hamburger {

@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import styles from './Navbar.module.css';
+import ThemeToggle from './ui/ThemeToggle';
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
@@ -57,17 +57,23 @@ const Navbar = () => {
                     <Link href="/a-propos">À Propos</Link>
                     <Link href="/services">Services</Link>
                     <Link href="/contact" className={styles.cta}>Contact</Link>
+                    <div className={styles.desktopToggle}>
+                        <ThemeToggle />
+                    </div>
                 </div>
 
-                <button
-                    className={`${styles.hamburger} ${mobileMenuOpen ? styles.open : ''}`}
-                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                    aria-label="Menu"
-                >
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
+                <div className={styles.mobileActions}>
+                    <ThemeToggle />
+                    <button
+                        className={`${styles.hamburger} ${mobileMenuOpen ? styles.open : ''}`}
+                        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                        aria-label="Menu"
+                    >
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
             </div>
 
             {/* Mobile Menu Overlay */}
