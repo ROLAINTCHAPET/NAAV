@@ -1,12 +1,11 @@
 'use client';
 
-'use client';
-
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Save, X, Upload, Users, Settings, Camera } from 'lucide-react';
 import { saveMember } from './actions';
 import styles from '@/components/admin/ProjectForm.module.css';
+import LoadingModal from '@/components/ui/LoadingModal';
 
 interface TeamFormProps {
     initialData?: any;
@@ -14,7 +13,7 @@ interface TeamFormProps {
 
 export default function TeamForm({ initialData }: TeamFormProps) {
     const router = useRouter();
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState<boolean | string>(false);
     const [formData, setFormData] = useState({
         full_name: initialData?.full_name || '',
         role: initialData?.role || '',
@@ -35,7 +34,7 @@ export default function TeamForm({ initialData }: TeamFormProps) {
         const file = e.target.files?.[0];
         if (!file) return;
 
-        setLoading(true);
+        setLoading("Téléchargement de la photo...");
         try {
             const { uploadProjectImage } = await import('../projects/actions');
             const url = await uploadProjectImage(file);
@@ -49,13 +48,14 @@ export default function TeamForm({ initialData }: TeamFormProps) {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        setLoading(true);
+        setLoading("Enregistrement du membre...");
         try {
             await saveMember({
                 ...formData,
                 id: initialData?.id
             });
             router.push('/admin/team');
+            router.refresh();
         } catch (err: any) {
             alert('Erreur : ' + err.message);
         } finally {
@@ -64,73 +64,80 @@ export default function TeamForm({ initialData }: TeamFormProps) {
     };
 
     return (
-        <form onSubmit={handleSubmit} className={styles.form}>
-            <div className={styles.main}>
-                <section className={styles.section}>
-                    <h2><Users size={20} /> Informations du Membre</h2>
-                    <div className={styles.grid}>
-                        <div className={styles.inputGroup}>
-                            <label>Nom complet</label>
-                            <input name="full_name" value={formData.full_name} onChange={handleChange} required />
+        <>
+            <form onSubmit={handleSubmit} className={styles.form}>
+                <div className={styles.main}>
+                    <section className={styles.section}>
+                        <h2><Users size={20} /> Informations du Membre</h2>
+                        <div className={styles.grid}>
+                            <div className={styles.inputGroup}>
+                                <label>Nom complet</label>
+                                <input name="full_name" value={formData.full_name} onChange={handleChange} required />
+                            </div>
+                            <div className={styles.inputGroup}>
+                                <label>Poste / Rôle</label>
+                                <input name="role" value={formData.role} onChange={handleChange} required placeholder="ex: Architecte Senior" />
+                            </div>
                         </div>
                         <div className={styles.inputGroup}>
-                            <label>Poste / Rôle</label>
-                            <input name="role" value={formData.role} onChange={handleChange} required placeholder="ex: Architecte Senior" />
+                            <label>Biographie</label>
+                            <textarea name="bio" value={formData.bio} onChange={handleChange} rows={4} />
                         </div>
-                    </div>
-                    <div className={styles.inputGroup}>
-                        <label>Biographie</label>
-                        <textarea name="bio" value={formData.bio} onChange={handleChange} rows={4} />
-                    </div>
-                    <div className={styles.grid}>
-                        <div className={styles.inputGroup}>
-                            <label>LinkedIn (URL)</label>
-                            <input name="linkedin" value={formData.linkedin} onChange={handleChange} />
+                        <div className={styles.grid}>
+                            <div className={styles.inputGroup}>
+                                <label>LinkedIn (URL)</label>
+                                <input name="linkedin" value={formData.linkedin} onChange={handleChange} />
+                            </div>
+                            <div className={styles.inputGroup}>
+                                <label>Instagram (URL)</label>
+                                <input name="instagram" value={formData.instagram} onChange={handleChange} />
+                            </div>
                         </div>
-                        <div className={styles.inputGroup}>
-                            <label>Instagram (URL)</label>
-                            <input name="instagram" value={formData.instagram} onChange={handleChange} />
-                        </div>
-                    </div>
-                </section>
-            </div>
-
-            <aside className={styles.aside}>
-                <div className={styles.sticky}>
-                    <div className={styles.card}>
-                        <h3><Settings size={16} /> Affichage</h3>
-                        <div className={styles.inputGroup}>
-                            <label>Ordre d&apos;affichage</label>
-                            <input type="number" name="display_order" value={formData.display_order} onChange={handleChange} />
-                        </div>
-                        <div className={styles.actions}>
-                            <button type="button" onClick={() => router.back()} className={styles.cancelBtn}>
-                                <X size={16} /> Annuler
-                            </button>
-                            <button type="submit" disabled={loading} className={styles.saveBtn}>
-                                <Save size={16} /> {loading ? 'Envoi...' : 'Enregistrer'}
-                            </button>
-                        </div>
-                    </div>
-
-                    <div className={styles.card} style={{ marginTop: '20px' }}>
-                        <h3><Camera size={16} /> Photo de Profil</h3>
-                        <div className={styles.uploadArea} style={{ padding: '20px', position: 'relative' }}>
-                            <Upload size={24} />
-                            <p style={{ fontSize: '0.8rem' }}>Ajouter une photo</p>
-                            <input
-                                type="file"
-                                onChange={handleFileUpload}
-                                style={{ position: 'absolute', inset: 0, opacity: 0, cursor: 'pointer' }}
-                                disabled={loading}
-                            />
-                        </div>
-                        {formData.photo && (
-                            <img src={formData.photo} alt="" style={{ width: '100%', borderRadius: '50%', aspectRatio: '1', objectFit: 'cover', marginTop: '10px' }} />
-                        )}
-                    </div>
+                    </section>
                 </div>
-            </aside>
-        </form>
+
+                <aside className={styles.aside}>
+                    <div className={styles.sticky}>
+                        <div className={styles.card}>
+                            <h3><Settings size={16} /> Affichage</h3>
+                            <div className={styles.inputGroup}>
+                                <label>Ordre d&apos;affichage</label>
+                                <input type="number" name="display_order" value={formData.display_order} onChange={handleChange} />
+                            </div>
+                            <div className={styles.actions}>
+                                <button type="button" onClick={() => router.back()} className={styles.cancelBtn}>
+                                    <X size={16} /> Annuler
+                                </button>
+                                <button type="submit" disabled={!!loading} className={styles.saveBtn}>
+                                    <Save size={16} /> {loading ? 'Envoi...' : 'Enregistrer'}
+                                </button>
+                            </div>
+                        </div>
+
+                        <div className={styles.card} style={{ marginTop: '20px' }}>
+                            <h3><Camera size={16} /> Photo de Profil</h3>
+                            <div className={styles.uploadArea} style={{ padding: '20px', position: 'relative' }}>
+                                <Upload size={24} />
+                                <p style={{ fontSize: '0.8rem' }}>Ajouter une photo</p>
+                                <input
+                                    type="file"
+                                    onChange={handleFileUpload}
+                                    style={{ position: 'absolute', inset: 0, opacity: 0, cursor: 'pointer' }}
+                                    disabled={!!loading}
+                                />
+                            </div>
+                            {formData.photo && (
+                                <img src={formData.photo} alt="" style={{ width: '100%', borderRadius: '50%', aspectRatio: '1', objectFit: 'cover', marginTop: '10px' }} />
+                            )}
+                        </div>
+                    </div>
+                </aside>
+            </form>
+
+            <LoadingModal
+                isOpen={!!loading}
+                message={typeof loading === 'string' ? loading : "Traitement en cours..."}
+            />
+        </>
     );
 }
