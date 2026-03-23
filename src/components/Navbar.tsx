@@ -1,11 +1,15 @@
+'use client';
+
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import styles from './Navbar.module.css';
 import ThemeToggle from './ui/ThemeToggle';
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-    const router = useRouter(); // Need to import useRouter
+    const router = useRouter();
     const [clickCount, setClickCount] = useState(0);
 
     useEffect(() => {
@@ -16,13 +20,10 @@ const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Triple click on logo to access admin (Furtive fallback)
     const handleLogoClick = (e: React.MouseEvent) => {
         const newCount = clickCount + 1;
         setClickCount(newCount);
-        console.log(`Logo click count: ${newCount}/3`);
 
-        // Use a persistent timer ID to avoid multiple resets
         if ((window as any).clickTimer) clearTimeout((window as any).clickTimer);
         (window as any).clickTimer = setTimeout(() => {
             setClickCount(0);
@@ -31,7 +32,6 @@ const Navbar = () => {
 
         if (newCount >= 3) {
             e.preventDefault();
-            console.log('Secret Triple Click Detected! Redirecting...');
             router.push('/nx72-naav/login');
         }
     };
