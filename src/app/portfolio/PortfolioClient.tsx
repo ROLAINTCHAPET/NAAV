@@ -101,7 +101,7 @@ const PortfolioClient = () => {
                         <Link key={project.id} href={`/portfolio/${project.slug}`} className={styles.card}>
                             <div className={styles.imageWrapper}>
                                 <Image
-                                    src={project.image}
+                                    src={project.image || '/images/projects/project1.png'}
                                     alt={project.title}
                                     fill
                                     className={styles.image}
