@@ -1,8 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
-import { Eye, Edit, Trash2 } from 'lucide-react';
+import { Eye, Trash2 } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
 import { deleteTestimonial } from '@/app/admin/testimonials/actions';
 import styles from '../projects/Projects.module.css';
@@ -44,11 +43,8 @@ export default function TestimonialsAdmin() {
             <header className={styles.header}>
                 <div>
                     <h1 className={styles.title}>Témoignages</h1>
-                    <p className={styles.subtitle}>Gérez les retours et avis de vos clients.</p>
+                    <p className={styles.subtitle}>Modérez les avis clients envoyés depuis le portfolio.</p>
                 </div>
-                <Link href="/admin/testimonials/new" className="btn-primary">
-                    + Nouveau Témoignage
-                </Link>
             </header>
 
             <div className={styles.tableWrapper}>
@@ -56,7 +52,7 @@ export default function TestimonialsAdmin() {
                     <thead>
                         <tr>
                             <th>Client</th>
-                            <th>Entreprise</th>
+                            <th>Projet</th>
                             <th>Note</th>
                             <th>Statut</th>
                             <th>Actions</th>
@@ -82,9 +78,6 @@ export default function TestimonialsAdmin() {
                                         >
                                             <Eye size={16} />
                                         </button>
-                                        <Link href={`/admin/testimonials/${t.id}`} className={styles.editBtn} title="Modifier">
-                                            <Edit size={16} />
-                                        </Link>
                                         <button
                                             className={styles.deleteBtn}
                                             onClick={() => handleDelete(t.id, t.client_name)}

@@ -7,6 +7,7 @@ export async function submitProjectFeedback(formData: FormData) {
     if (!supabase) return { success: false, message: "Configuration Supabase manquante." };
 
     const projectId = formData.get('projectId') as string;
+    const projectTitle = formData.get('projectTitle') as string;
     const rating = parseInt(formData.get('rating') as string) || 5;
     const comment = formData.get('comment') as string;
     const userName = formData.get('name') as string;
@@ -19,7 +20,7 @@ export async function submitProjectFeedback(formData: FormData) {
                 content: comment,
                 rating: rating,
                 status: 'brouillon', // For moderation
-                company: 'Portfolio Feedback' // Tagging source
+                company: projectTitle || 'Site Web' // Store project context
             }]);
 
         if (error) throw error;

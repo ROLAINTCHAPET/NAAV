@@ -25,6 +25,7 @@ const Feedback = ({ projectId, projectTitle }: Props) => {
         setStatus('loading');
         formData.append('rating', rating.toString());
         formData.append('projectId', projectId);
+        formData.append('projectTitle', projectTitle);
 
         try {
             const result = await submitProjectFeedback(formData);
