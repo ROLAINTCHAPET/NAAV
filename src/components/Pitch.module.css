@@ -41,11 +41,16 @@
 
 .visual {
     position: relative;
-    aspect-ratio: 4/5;
+    aspect-ratio: 4 / 5;
     border-radius: var(--radius-lg);
     overflow: hidden;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
-    background: #111;
+    box-shadow: var(--shadow-card);
+    background: var(--color-anthracite);
+}
+
+[data-theme='dark'] .visual,
+:root:not([data-theme='light']) .visual {
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
 }
 
 .image {
@@ -80,9 +85,9 @@
     position: absolute;
     bottom: 30px;
     left: 30px;
-    background: rgba(10, 10, 10, 0.7);
+    background: var(--color-card);
     backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--color-border);
     padding: 16px 24px;
     border-radius: var(--radius-md);
     display: flex;
@@ -90,6 +95,16 @@
     gap: 16px;
     animation: floatBadge 4s ease-in-out infinite alternate;
     z-index: 3;
+    box-shadow: var(--shadow-card);
+}
+
+[data-theme='dark'] .badge,
+:root:not([data-theme='light']) .badge {
+    background: rgba(10, 10, 10, 0.7);
+}
+
+[data-theme='light'] .badge {
+    background: rgba(255, 255, 255, 0.8);
 }
 
 @keyframes floatBadge {

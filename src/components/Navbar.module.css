@@ -12,11 +12,20 @@
 }
 
 .scrolled {
-    background: rgba(10, 10, 10, 0.9);
+    background: var(--color-dark);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     height: 70px;
     box-shadow: 0 1px 0 var(--color-border);
+}
+
+[data-theme='dark'] .scrolled,
+:root:not([data-theme='light']) .scrolled {
+    background: rgba(10, 10, 10, 0.8);
+}
+
+[data-theme='light'] .scrolled {
+    background: rgba(252, 250, 247, 0.8);
 }
 
 .navContainer {

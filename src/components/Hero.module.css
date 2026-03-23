@@ -34,11 +34,23 @@
 .heroOverlay {
     position: absolute;
     inset: 0;
+    z-index: 1;
+    transition: background 0.5s ease;
+}
+
+[data-theme='dark'] .heroOverlay,
+:root:not([data-theme='light']) .heroOverlay {
     background: linear-gradient(to top,
             rgba(10, 10, 10, 1) 0%,
             rgba(10, 10, 10, 0.6) 40%,
             rgba(10, 10, 10, 0.2) 100%);
-    z-index: 1;
+}
+
+[data-theme='light'] .heroOverlay {
+    background: linear-gradient(to top,
+            rgba(252, 250, 247, 1) 0%,
+            rgba(252, 250, 247, 0.4) 50%,
+            rgba(252, 250, 247, 0.1) 100%);
 }
 
 /* Ambient Orbs */
