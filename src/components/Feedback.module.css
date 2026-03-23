@@ -1,0 +1,115 @@
+.feedbackContainer {
+    background: var(--color-anthracite);
+    padding: 60px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    margin-top: 80px;
+}
+
+.title {
+    font-family: var(--font-title);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-gold);
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: var(--color-gray-light);
+    margin-bottom: 40px;
+    font-size: 0.95rem;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.ratingBox {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.ratingBox label {
+    font-family: var(--font-title);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--color-cream);
+}
+
+.stars {
+    display: flex;
+    gap: 5px;
+}
+
+.star {
+    font-size: 1.8rem;
+    background: none;
+    border: none;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.star.active {
+    color: var(--color-gold);
+}
+
+.inputGroup {
+    width: 100%;
+}
+
+.input,
+.textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 14px 18px;
+    color: var(--color-cream);
+    font-family: var(--font-body);
+    transition: border-color var(--transition-std);
+}
+
+.input:focus,
+.textarea:focus {
+    outline: none;
+    border-color: var(--color-gold);
+}
+
+.error {
+    color: #ff4d4d;
+    font-size: 0.85rem;
+}
+
+.success {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.icon {
+    width: 50px;
+    height: 50px;
+    background: var(--color-gold);
+    color: var(--color-black);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-weight: 800;
+}
+
+@media (max-width: 600px) {
+    .feedbackContainer {
+        padding: 40px 20px;
+    }
+
+    .ratingBox {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

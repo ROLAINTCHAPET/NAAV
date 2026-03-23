@@ -1,0 +1,181 @@
+.hero {
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+}
+
+.heroBg {
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/hero.png');
+    background-size: cover;
+    background-position: center;
+    animation: zoomBg 20s infinite alternate;
+}
+
+@keyframes zoomBg {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.1);
+    }
+}
+
+.heroOverlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top,
+            rgba(10, 10, 10, 1) 0%,
+            rgba(10, 10, 10, 0.4) 50%,
+            rgba(10, 10, 10, 0.2) 100%);
+}
+
+.content {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 5% 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
+}
+
+.left {
+    max-width: 800px;
+}
+
+.eyebrow {
+    font-family: var(--font-title);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.eyebrow::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--color-gold);
+}
+
+.title {
+    font-family: var(--font-title);
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--color-cream);
+    margin-bottom: 40px;
+    letter-spacing: -0.02em;
+}
+
+.title em {
+    font-style: italic;
+    font-family: var(--font-serif);
+    font-weight: 300;
+    color: var(--color-gold-light);
+}
+
+.actions {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.stats {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.stat {
+    text-align: right;
+}
+
+.statNum {
+    font-family: var(--font-title);
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--color-gold);
+    line-height: 1;
+}
+
+.statLabel {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-gray-light);
+    margin-top: 5px;
+}
+
+.scroll {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--color-gray);
+    animation: scrollAnim 2s infinite;
+}
+
+@keyframes scrollAnim {
+
+    0%,
+    100% {
+        opacity: 0.5;
+        transform: translateY(0);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateY(10px);
+    }
+}
+
+.scrollLine {
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(to bottom, var(--color-gold), transparent);
+}
+
+@media (max-width: 1024px) {
+    .content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .right {
+        align-items: flex-start;
+        margin-top: 40px;
+    }
+
+    .stats {
+        margin-bottom: 30px;
+    }
+
+    .scroll {
+        display: none;
+    }
+}

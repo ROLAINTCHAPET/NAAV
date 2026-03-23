@@ -1,0 +1,148 @@
+.footer {
+    background: var(--color-black);
+    padding: 100px 0 40px;
+    border-top: 1px solid var(--color-border);
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 80px;
+    margin-bottom: 80px;
+}
+
+.brand {
+    max-width: 350px;
+}
+
+.logo {
+    font-family: var(--font-title);
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: 0.3em;
+    color: var(--color-cream);
+    margin-bottom: 25px;
+}
+
+.logo span {
+    color: var(--color-gold);
+}
+
+.tagline {
+    font-size: 0.9rem;
+    color: var(--color-gray-light);
+    line-height: 1.8;
+    margin-bottom: 35px;
+}
+
+.socials {
+    display: flex;
+    gap: 15px;
+}
+
+.socialLink {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-std);
+}
+
+.socialLink:hover {
+    border-color: var(--color-gold);
+    background: rgba(201, 168, 76, 0.05);
+}
+
+.socialDot {
+    width: 6px;
+    height: 6px;
+    background: var(--color-gold);
+    border-radius: 50%;
+}
+
+.links {
+    display: flex;
+    gap: 60px;
+}
+
+.col h4 {
+    font-family: var(--font-title);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--color-cream);
+    margin-bottom: 30px;
+}
+
+.col ul {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.col ul li {
+    font-size: 0.9rem;
+    color: var(--color-gray-light);
+    transition: color var(--transition-std);
+}
+
+.col ul li a:hover {
+    color: var(--color-gold-light);
+}
+
+.bottom {
+    padding-top: 40px;
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.copy,
+.legal {
+    font-size: 0.8rem;
+    color: var(--color-gray);
+}
+
+.legal {
+    display: flex;
+    gap: 30px;
+}
+
+.legal a:hover {
+    color: var(--color-gold);
+}
+
+@media (max-width: 1024px) {
+    .grid {
+        flex-direction: column;
+        gap: 60px;
+    }
+
+    .links {
+        gap: 40px;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 600px) {
+    .bottom {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .legal {
+        justify-content: center;
+    }
+}

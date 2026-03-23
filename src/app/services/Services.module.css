@@ -1,0 +1,165 @@
+.wrapper {
+  background: var(--color-black);
+  padding-top: 100px;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+
+.hero {
+  padding: 100px 0 60px;
+}
+
+.heroLead {
+  max-width: 700px;
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: var(--color-gray-light);
+  margin-top: 20px;
+}
+
+.expertise {
+  padding: 80px 0 120px;
+}
+
+.expertiseGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+
+.expertiseCard {
+  background: var(--color-card);
+  padding: 60px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  transition: all var(--transition-std);
+}
+
+.expertiseCard:hover {
+  border-color: var(--color-gold);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.cardNum {
+  font-family: var(--font-title);
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--color-gold);
+}
+
+.cardTitle {
+  font-family: var(--font-title);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-cream);
+}
+
+.cardDesc {
+  color: var(--color-gray-light);
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+.featureList {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.featureList li {
+  font-family: var(--font-title);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-gray);
+  padding: 6px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+}
+
+.process {
+  padding: 120px 0;
+  background: var(--color-dark);
+}
+
+.processHeader {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.processGrid {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  position: relative;
+}
+
+.processItem {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  position: relative;
+  z-index: 2;
+}
+
+.stepCircle {
+  width: 60px;
+  height: 60px;
+  background: var(--color-black);
+  border: 2px solid var(--color-gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-title);
+  font-weight: 800;
+  color: var(--color-gold-light);
+  font-size: 1.1rem;
+}
+
+.stepContent h3 {
+  font-family: var(--font-title);
+  font-size: 1.1rem;
+  color: var(--color-cream);
+  margin-bottom: 15px;
+}
+
+.stepContent p {
+  font-size: 0.9rem;
+  color: var(--color-gray);
+  line-height: 1.6;
+}
+
+.stepLine {
+  position: absolute;
+  top: 30px;
+  left: calc(50% + 30px);
+  width: calc(100% - 60px);
+  height: 1px;
+  background: var(--color-border);
+  z-index: 1;
+}
+
+@media (max-width: 1024px) {
+  .expertiseGrid { grid-template-columns: 1fr; }
+  .processGrid { flex-direction: column; gap: 60px; }
+  .stepLine { display: none; }
+}
