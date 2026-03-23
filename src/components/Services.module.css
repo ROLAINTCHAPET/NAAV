@@ -74,7 +74,7 @@
 
 .desc {
     font-size: 0.85rem;
-    color: #999;
+    color: var(--color-gray);
     line-height: 1.8;
     margin-bottom: 30px;
 }

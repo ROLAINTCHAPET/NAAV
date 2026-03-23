@@ -160,11 +160,10 @@
     font-size: 0.6rem;
     letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.3);
+    color: var(--color-gray);
     animation: scrollAnim 2.5s infinite;
     opacity: 0;
     animation-delay: 1.5s;
-    /* Wait for other animations */
 }
 
 @keyframes fadeInUp {

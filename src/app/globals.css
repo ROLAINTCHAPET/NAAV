@@ -39,18 +39,25 @@
 }
 
 [data-theme='light'] {
-  --color-black: #ffffff;
-  --color-dark: #fcfcfc;
-  --color-anthracite: #f5f5f5;
+  --color-black: #fcfaf7;
+  --color-dark: #ffffff;
+  --color-anthracite: #f1ede9;
   --color-card: #ffffff;
-  --color-cream: #1a1a1a;
+  --color-cream: #1a1917;
   --color-white: #0a0a0a;
-  --color-gray: #888888;
-  --color-gray-light: #555555;
-  --color-border: rgba(201, 168, 76, 0.3);
+  --color-gray: #666666;
+  /* Darkened from #8a8a8a */
+  --color-gray-light: #444444;
+  /* Darkened from #666666 */
+  --color-border: rgba(138, 111, 48, 0.15);
 
-  --shadow-gold: 0 10px 40px rgba(201, 168, 76, 0.1);
-  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.05);
+  --shadow-gold: 0 10px 50px rgba(166, 139, 61, 0.15);
+  --shadow-card: 0 30px 90px rgba(0, 0, 0, 0.05);
+
+  /* Deeper gold for light mode readability */
+  --color-gold: #a68b3d;
+  --color-gold-light: #c9a84c;
+  --color-gold-dim: #7d662a;
 }
 
 /* ── Reset & Base ── */
