@@ -80,7 +80,7 @@ export default function ProjectForm({ initialData, mode }: ProjectFormProps) {
         <form onSubmit={handleSubmit} className={styles.form}>
             <div className={styles.main}>
                 <section className={styles.section}>
-                    <h2>Informations Générales</h2>
+                    <h2><Save size={20} /> Informations Générales</h2>
                     <div className={styles.grid}>
                         <div className={styles.inputGroup}>
                             <label>Titre du Projet</label>
@@ -122,7 +122,7 @@ export default function ProjectForm({ initialData, mode }: ProjectFormProps) {
                 </section>
 
                 <section className={styles.section}>
-                    <h2>Descriptions</h2>
+                    <h2><X size={20} /> Descriptions</h2>
                     <div className={styles.inputGroup}>
                         <label>Accroche (Courte description)</label>
                         <textarea name="short_description" value={formData.short_description} onChange={handleChange} rows={2} />
@@ -134,7 +134,7 @@ export default function ProjectForm({ initialData, mode }: ProjectFormProps) {
                 </section>
 
                 <section className={styles.section}>
-                    <h2>Médias</h2>
+                    <h2><Upload size={20} /> Médias</h2>
                     <div className={styles.uploadArea}>
                         <Upload size={32} />
                         <p>Glissez vos images ici ou <span>parcourez</span></p>
