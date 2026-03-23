@@ -21,14 +21,17 @@ export async function getProjects() {
         .order('created_at', { ascending: false });
 
     if (error) {
-        console.error('Error fetching projects:', {
-            code: error.code,
-            message: error.message,
-            details: error.details
-        });
+        console.error('Error fetching projects:', error);
         return [];
     }
-    return data;
+
+    // Normalize data to match Project interface
+    return data.map((p: any) => ({
+        ...p,
+        image: p.cover_image,
+        description: p.short_description,
+        gallery: p.images || [],
+    }));
 }
 
 export async function getProjectBySlug(slug: string) {
@@ -40,19 +43,20 @@ export async function getProjectBySlug(slug: string) {
         .single();
 
     if (error) {
-        // PGRST116 means no rows were found, which is a valid case handled by fallbacks
-        if (error.code === 'PGRST116') {
-            return null;
-        }
-        console.error('Error fetching project by slug:', {
-            code: error.code,
-            message: error.message,
-            details: error.details,
-            slug
-        });
+        if (error.code === 'PGRST116') return null;
+        console.error('Error fetching project by slug:', error);
         return null;
     }
-    return data;
+
+    // Normalize
+    return {
+        ...data,
+        image: data.cover_image,
+        description: data.short_description,
+        challenge: data.challenge || data.short_description, // Fallback if missing
+        solution: data.solution || data.long_description,    // Mapping long_description to solution
+        gallery: data.images || [],
+    };
 }
 
 export async function getLatestArticles() {
