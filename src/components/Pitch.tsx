@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import styles from './Pitch.module.css';
 
 const Pitch = () => {
@@ -6,7 +7,12 @@ const Pitch = () => {
             <div className={styles.container}>
                 <div className={styles.grid}>
                     <div className={styles.visual}>
-                        <div className={styles.imagePlaceholder}></div>
+                        <Image
+                            src="/images/projects/project2.png"
+                            alt="Vision Architecture"
+                            fill
+                            className={styles.image}
+                        />
                         <div className={styles.badge}>
                             <div className={styles.badgeIcon}>
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
