@@ -9,20 +9,25 @@
 
 .heroBg {
     position: absolute;
-    inset: 0;
+    inset: -50px;
     background-image: url('/images/hero.png');
     background-size: cover;
     background-position: center;
-    animation: zoomBg 20s infinite alternate;
+    animation: kenBurns 30s ease-in-out infinite alternate;
+    filter: brightness(0.8) contrast(1.1);
 }
 
-@keyframes zoomBg {
-    from {
-        transform: scale(1);
+@keyframes kenBurns {
+    0% {
+        transform: scale(1.1) translate(0, 0);
     }
 
-    to {
-        transform: scale(1.1);
+    50% {
+        transform: scale(1.2) translate(-2%, -2%);
+    }
+
+    100% {
+        transform: scale(1.1) translate(2%, 1%);
     }
 }
 
@@ -31,8 +36,44 @@
     inset: 0;
     background: linear-gradient(to top,
             rgba(10, 10, 10, 1) 0%,
-            rgba(10, 10, 10, 0.4) 50%,
+            rgba(10, 10, 10, 0.6) 40%,
             rgba(10, 10, 10, 0.2) 100%);
+    z-index: 1;
+}
+
+/* Ambient Orbs */
+.hero::after,
+.hero::before {
+    content: '';
+    position: absolute;
+    width: 60vw;
+    height: 60vw;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(197, 165, 114, 0.05) 0%, transparent 70%);
+    z-index: 2;
+    pointer-events: none;
+    animation: floatOrb 20s infinite alternate;
+}
+
+.hero::after {
+    top: -20%;
+    right: -20%;
+    animation-delay: -5s;
+}
+
+.hero::before {
+    bottom: -20%;
+    left: -20%;
+}
+
+@keyframes floatOrb {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    100% {
+        transform: translate(-5%, 5%) scale(1.2);
+    }
 }
 
 .content {
@@ -48,10 +89,6 @@
     gap: 40px;
 }
 
-.left {
-    max-width: 800px;
-}
-
 .eyebrow {
     font-family: var(--font-title);
     font-size: 0.7rem;
@@ -63,69 +100,44 @@
     display: flex;
     align-items: center;
     gap: 15px;
-}
-
-.eyebrow::before {
-    content: '';
-    display: block;
-    width: 40px;
-    height: 1px;
-    background: var(--color-gold);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    animation-delay: 0.2s;
 }
 
 .title {
     font-family: var(--font-title);
-    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-size: clamp(2.5rem, 6vw, 5.5rem);
     font-weight: 800;
-    line-height: 1.1;
+    line-height: 1.05;
     color: var(--color-cream);
     margin-bottom: 40px;
     letter-spacing: -0.02em;
-}
-
-.title em {
-    font-style: italic;
-    font-family: var(--font-serif);
-    font-weight: 300;
-    color: var(--color-gold-light);
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    animation-delay: 0.4s;
 }
 
 .actions {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
-}
-
-.right {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    animation-delay: 0.8s;
 }
 
 .stats {
     display: flex;
-    gap: 40px;
+    gap: 50px;
     margin-bottom: 60px;
-}
-
-.stat {
-    text-align: right;
-}
-
-.statNum {
-    font-family: var(--font-title);
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: var(--color-gold);
-    line-height: 1;
-}
-
-.statLabel {
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--color-gray-light);
-    margin-top: 5px;
+    opacity: 0;
+    transform: translateX(30px);
+    animation: fadeInRight 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    animation-delay: 1s;
 }
 
 .scroll {
@@ -136,21 +148,24 @@
     font-size: 0.6rem;
     letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: var(--color-gray);
-    animation: scrollAnim 2s infinite;
+    color: rgba(255, 255, 255, 0.3);
+    animation: scrollAnim 2.5s infinite;
+    opacity: 0;
+    animation-delay: 1.5s;
+    /* Wait for other animations */
 }
 
-@keyframes scrollAnim {
-
-    0%,
-    100% {
-        opacity: 0.5;
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
         transform: translateY(0);
     }
+}
 
-    50% {
+@keyframes fadeInRight {
+    to {
         opacity: 1;
-        transform: translateY(10px);
+        transform: translateX(0);
     }
 }
 
