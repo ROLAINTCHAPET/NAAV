@@ -1,6 +1,17 @@
+'use client';
+
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import {
+    Users,
+    MessageSquare,
+    FolderKanban,
+    PenTool,
+    Save,
+    X
+} from 'lucide-react';
 import { getDashboardCounts } from '@/lib/supabase';
-// ... existing imports
+import styles from './Admin.module.css';
 
 export default function AdminDashboard() {
     const [counts, setCounts] = useState({
