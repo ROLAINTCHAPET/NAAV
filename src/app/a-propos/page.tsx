@@ -49,7 +49,12 @@ export default function AboutPage() {
                             </div>
                         </div>
                         <div className={styles.visual}>
-                            <div className={styles.imagePlaceholder}></div>
+                            <Image
+                                src="/images/projects/project1.png"
+                                alt="Philosophie NAAV"
+                                fill
+                                className={styles.image}
+                            />
                         </div>
                     </div>
                 </div>

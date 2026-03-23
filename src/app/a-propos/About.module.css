@@ -93,51 +93,62 @@
     overflow: hidden;
 }
 
+.image {
+    object-fit: cover;
+    animation: kenBurnsAbout 20s ease-in-out infinite alternate;
+}
+
+@keyframes kenBurnsAbout {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.15);
+    }
+}
+
 .imagePlaceholder {
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 30% 30%, rgba(201, 168, 76, 0.1) 0%, transparent 70%);
-}
 
-.mission {
-    padding: 160px 0;
-    background: var(--color-black);
-}
-
-.missionCard {
-    background: linear-gradient(135deg, #131313 0%, #080808 100%);
-    padding: 100px 5%;
-    text-align: center;
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--color-border);
-}
-
-.missionTitle {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: clamp(1.8rem, 4vw, 3rem);
-    font-weight: 300;
-    color: var(--color-cream);
-    line-height: 1.4;
-    margin-bottom: 40px;
-}
-
-.author {
-    font-family: var(--font-title);
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--color-gold);
-}
-
-@media (max-width: 1024px) {
-    .grid {
-        grid-template-columns: 1fr;
-        gap: 60px;
+    .mission {
+        padding: 160px 0;
+        background: var(--color-black);
     }
 
     .missionCard {
-        padding: 60px 5%;
+        background: linear-gradient(135deg, #131313 0%, #080808 100%);
+        padding: 100px 5%;
+        text-align: center;
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--color-border);
     }
-}
+
+    .missionTitle {
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-size: clamp(1.8rem, 4vw, 3rem);
+        font-weight: 300;
+        color: var(--color-cream);
+        line-height: 1.4;
+        margin-bottom: 40px;
+    }
+
+    .author {
+        font-family: var(--font-title);
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--color-gold);
+    }
+
+    @media (max-width: 1024px) {
+        .grid {
+            grid-template-columns: 1fr;
+            gap: 60px;
+        }
+
+        .missionCard {
+            padding: 60px 5%;
+        }
+    }
