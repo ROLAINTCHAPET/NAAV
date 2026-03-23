@@ -1,20 +1,50 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Search } from 'lucide-react';
-import { projects, Project } from '@/data/projects';
+import { Search, Loader2 } from 'lucide-react';
+import { projects as mockProjects, Project } from '@/data/projects';
+import { getProjects } from '@/lib/supabase';
 import styles from './Portfolio.module.css';
 
 const categories = ['Tous', 'Résidentiel', 'Commercial', 'Intérieur', 'Urbanisme', 'Visualisation 3D'];
 
 const PortfolioClient = () => {
+    const [allProjects, setAllProjects] = useState<Project[]>(mockProjects);
     const [activeCategory, setActiveCategory] = useState('Tous');
     const [searchQuery, setSearchQuery] = useState('');
     const [visibleCount, setVisibleCount] = useState(6);
+    const [loading, setLoading] = useState(true);
 
-    const filteredProjects = projects.filter(p => {
+    useEffect(() => {
+        async function fetchProjects() {
+            setLoading(true);
+            try {
+                const supabaseProjects = await getProjects();
+                if (supabaseProjects && supabaseProjects.length > 0) {
+                    // Combine Supabase projects with mock projects, avoiding duplicates by slug
+                    const combined = [...supabaseProjects];
+
+                    mockProjects.forEach(mock => {
+                        if (!combined.some(p => p.slug === mock.slug)) {
+                            combined.push(mock);
+                        }
+                    });
+
+                    setAllProjects(combined as any);
+                }
+            } catch (error) {
+                console.error('Error fetching dynamic projects:', error);
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        fetchProjects();
+    }, []);
+
+    const filteredProjects = allProjects.filter(p => {
         const matchesCategory = activeCategory === 'Tous' || p.category === activeCategory;
         const matchesSearch = p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
             p.description.toLowerCase().includes(searchQuery.toLowerCase());
@@ -58,8 +88,15 @@ const PortfolioClient = () => {
                     </div>
                 </div>
 
+                {loading && (
+                    <div className={styles.loader}>
+                        <Loader2 className="animate-spin" size={40} />
+                        <p>Chargement des projets...</p>
+                    </div>
+                )}
+
                 {/* Grid */}
-                <div className={styles.grid}>
+                <div className={`${styles.grid} ${loading ? styles.fadeOut : ''}`}>
                     {displayedProjects.map((project) => (
                         <Link key={project.id} href={`/portfolio/${project.slug}`} className={styles.card}>
                             <div className={styles.imageWrapper}>
