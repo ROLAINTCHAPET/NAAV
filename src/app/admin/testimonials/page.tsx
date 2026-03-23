@@ -1,7 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { Eye, Edit, Trash2 } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
 import { deleteTestimonial } from '@/app/admin/testimonials/actions';
 import styles from '../projects/Projects.module.css';
@@ -9,6 +10,7 @@ import styles from '../projects/Projects.module.css';
 export default function TestimonialsAdmin() {
     const [testimonials, setTestimonials] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
+    const [expandedId, setExpandedId] = useState<string | null>(null);
 
     useEffect(() => {
         loadTestimonials();
@@ -62,25 +64,47 @@ export default function TestimonialsAdmin() {
                     </thead>
                     <tbody>
                         {testimonials.map((t: any) => (
-                            <tr key={t.id}>
-                                <td><strong>{t.client_name}</strong></td>
-                                <td>{t.company || '-'}</td>
-                                <td>{t.rating ? '★'.repeat(t.rating) : '-'}</td>
-                                <td>
-                                    <span className={`${styles.status} ${styles[t.status]}`}>
-                                        {t.status === 'publie' ? 'Publié' : 'Brouillon'}
-                                    </span>
-                                </td>
-                                <td className={styles.actions}>
-                                    <Link href={`/admin/testimonials/${t.id}`} className={styles.editBtn}>Modifier</Link>
-                                    <button
-                                        className={styles.deleteBtn}
-                                        onClick={() => handleDelete(t.id, t.client_name)}
-                                    >
-                                        Supprimer
-                                    </button>
-                                </td>
-                            </tr>
+                            <React.Fragment key={t.id}>
+                                <tr>
+                                    <td><strong>{t.client_name}</strong></td>
+                                    <td>{t.company || '-'}</td>
+                                    <td>{t.rating ? '★'.repeat(t.rating) : '-'}</td>
+                                    <td>
+                                        <span className={`${styles.status} ${styles[t.status]}`}>
+                                            {t.status === 'publie' ? 'Publié' : 'Brouillon'}
+                                        </span>
+                                    </td>
+                                    <td className={styles.actions}>
+                                        <button
+                                            className={styles.viewBtn}
+                                            onClick={() => setExpandedId(expandedId === t.id ? null : t.id)}
+                                            title="Voir l'avis"
+                                        >
+                                            <Eye size={16} />
+                                        </button>
+                                        <Link href={`/admin/testimonials/${t.id}`} className={styles.editBtn} title="Modifier">
+                                            <Edit size={16} />
+                                        </Link>
+                                        <button
+                                            className={styles.deleteBtn}
+                                            onClick={() => handleDelete(t.id, t.client_name)}
+                                            title="Supprimer"
+                                        >
+                                            <Trash2 size={16} />
+                                        </button>
+                                    </td>
+                                </tr>
+                                {expandedId === t.id && (
+                                    <tr key={`expanded-${t.id}`}>
+                                        <td colSpan={5}>
+                                            <div className={styles.contentBox}>
+                                                <strong>Avis de {t.client_name} :</strong>
+                                                <p style={{ marginTop: '10px' }}>{t.content}</p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                )}
+                            </React.Fragment>
                         ))}
                         {testimonials.length === 0 && (
                             <tr>
@@ -92,6 +116,6 @@ export default function TestimonialsAdmin() {
                     </tbody>
                 </table>
             </div>
-        </div>
+        </div >
     );
 }
