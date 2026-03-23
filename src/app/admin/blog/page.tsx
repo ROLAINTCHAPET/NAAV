@@ -1,20 +1,42 @@
+'use client';
+
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { Plus, Edit, Trash2, ExternalLink, FileText } from 'lucide-react';
+import { Plus, Edit, Trash2, FileText } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
+import { deleteArticle } from '@/app/admin/blog/actions';
 import styles from '../projects/Projects.module.css'; // Reusing table styles
 
-export const revalidate = 0;
+export default function AdminBlogPage() {
+    const [articles, setArticles] = useState<any[]>([]);
+    const [loading, setLoading] = useState(true);
 
-async function getArticles() {
-    const { data } = await supabase
-        .from('articles')
-        .select('*')
-        .order('published_at', { ascending: false });
-    return data || [];
-}
+    useEffect(() => {
+        loadArticles();
+    }, []);
 
-export default async function AdminBlogPage() {
-    const articles = await getArticles();
+    const loadArticles = async () => {
+        setLoading(true);
+        if (!supabase) return;
+        const { data } = await supabase
+            .from('articles')
+            .select('*')
+            .order('created_at', { ascending: false });
+        setArticles(data || []);
+        setLoading(false);
+    };
+
+    const handleDelete = async (id: string, title: string) => {
+        if (!confirm(`Supprimer l'article "${title}" ?`)) return;
+
+        try {
+            await deleteArticle(id);
+            loadArticles();
+        } catch (error) {
+            console.error(error);
+            alert('Erreur lors de la suppression');
+        }
+    };
 
     return (
         <div className={styles.container}>
@@ -73,7 +95,10 @@ export default async function AdminBlogPage() {
                                             <Link href={`/admin/blog/${article.id}`} className={styles.editBtn}>
                                                 <Edit size={16} />
                                             </Link>
-                                            <button className={styles.deleteBtn}>
+                                            <button
+                                                className={styles.deleteBtn}
+                                                onClick={() => handleDelete(article.id, article.title)}
+                                            >
                                                 <Trash2 size={16} />
                                             </button>
                                         </div>

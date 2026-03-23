@@ -1,21 +1,41 @@
+'use client';
+
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { supabase } from '@/lib/supabase';
 import { deleteTestimonial } from '@/app/admin/testimonials/actions';
 import styles from '../projects/Projects.module.css';
 
-export const revalidate = 0;
+export default function TestimonialsAdmin() {
+    const [testimonials, setTestimonials] = useState<any[]>([]);
+    const [loading, setLoading] = useState(true);
 
-async function getTestimonials() {
-    if (!supabase) return [];
-    const { data } = await supabase
-        .from('testimonials')
-        .select('*')
-        .order('created_at', { ascending: false });
-    return data || [];
-}
+    useEffect(() => {
+        loadTestimonials();
+    }, []);
 
-export default async function TestimonialsAdmin() {
-    const testimonials = await getTestimonials();
+    const loadTestimonials = async () => {
+        setLoading(true);
+        if (!supabase) return;
+        const { data } = await supabase
+            .from('testimonials')
+            .select('*')
+            .order('created_at', { ascending: false });
+        setTestimonials(data || []);
+        setLoading(false);
+    };
+
+    const handleDelete = async (id: string, name: string) => {
+        if (!confirm(`Supprimer le témoignage de "${name}" ?`)) return;
+
+        try {
+            await deleteTestimonial(id);
+            loadTestimonials();
+        } catch (error) {
+            console.error(error);
+            alert('Erreur lors de la suppression');
+        }
+    };
 
     return (
         <div className={styles.container}>
@@ -53,14 +73,12 @@ export default async function TestimonialsAdmin() {
                                 </td>
                                 <td className={styles.actions}>
                                     <Link href={`/admin/testimonials/${t.id}`} className={styles.editBtn}>Modifier</Link>
-                                    <form action={async () => {
-                                        'use server';
-                                        await deleteTestimonial(t.id);
-                                    }}>
-                                        <button type="submit" className={styles.deleteBtn} onClick={(e: any) => !confirm('Supprimer ce témoignage ?') && e.preventDefault()}>
-                                            Supprimer
-                                        </button>
-                                    </form>
+                                    <button
+                                        className={styles.deleteBtn}
+                                        onClick={() => handleDelete(t.id, t.client_name)}
+                                    >
+                                        Supprimer
+                                    </button>
                                 </td>
                             </tr>
                         ))}

@@ -1,20 +1,42 @@
+'use client';
+
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Plus, Edit, Trash2, Users } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
+import { deleteMember } from '@/app/admin/team/actions';
 import styles from '../projects/Projects.module.css';
 
-export const revalidate = 0;
+export default function AdminTeamPage() {
+    const [members, setMembers] = useState<any[]>([]);
+    const [loading, setLoading] = useState(true);
 
-async function getTeam() {
-    const { data } = await supabase
-        .from('team_members')
-        .select('*')
-        .order('display_order', { ascending: true });
-    return data || [];
-}
+    useEffect(() => {
+        loadMembers();
+    }, []);
 
-export default async function AdminTeamPage() {
-    const members = await getTeam();
+    const loadMembers = async () => {
+        setLoading(true);
+        if (!supabase) return;
+        const { data } = await supabase
+            .from('team_members')
+            .select('*')
+            .order('display_order', { ascending: true });
+        setMembers(data || []);
+        setLoading(false);
+    };
+
+    const handleDelete = async (id: string, name: string) => {
+        if (!confirm(`Supprimer le membre "${name}" ?`)) return;
+
+        try {
+            await deleteMember(id);
+            loadMembers();
+        } catch (error) {
+            console.error(error);
+            alert('Erreur lors de la suppression');
+        }
+    };
 
     return (
         <div className={styles.container}>
@@ -66,7 +88,10 @@ export default async function AdminTeamPage() {
                                             <Link href={`/admin/team/${member.id}`} className={styles.editBtn}>
                                                 <Edit size={16} />
                                             </Link>
-                                            <button className={styles.deleteBtn}>
+                                            <button
+                                                className={styles.deleteBtn}
+                                                onClick={() => handleDelete(member.id, member.full_name)}
+                                            >
                                                 <Trash2 size={16} />
                                             </button>
                                         </div>
