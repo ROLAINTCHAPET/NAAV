@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Save, X, Upload, FileText, Send, Image as ImageIcon } from 'lucide-react';
 import { saveArticle } from './actions';
-import styles from '../projects/ProjectForm.module.css';
+import styles from '@/components/admin/ProjectForm.module.css';
 
 interface BlogFormProps {
     initialData?: any;

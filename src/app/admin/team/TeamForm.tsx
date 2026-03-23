@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Save, X, Upload, Users, Settings, Camera } from 'lucide-react';
 import { saveMember } from './actions';
-import styles from '../projects/ProjectForm.module.css';
+import styles from '@/components/admin/ProjectForm.module.css';
 
 interface TeamFormProps {
     initialData?: any;
