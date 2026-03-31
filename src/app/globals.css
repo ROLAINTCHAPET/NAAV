@@ -142,6 +142,12 @@ button {
   padding: 120px 0;
 }
 
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 80px 0;
+  }
+}
+
 .section-eyebrow {
   font-family: var(--font-title);
   font-size: 0.68rem;
@@ -165,7 +171,7 @@ button {
 
 .section-title {
   font-family: var(--font-title);
-  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-size: clamp(1.75rem, 4vw, 3rem);
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: -0.02em;

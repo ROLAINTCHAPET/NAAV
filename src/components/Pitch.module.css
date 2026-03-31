@@ -168,3 +168,25 @@
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(197, 165, 114, 0.1);
 }
+
+@media (max-width: 992px) {
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .visual {
+        order: -1;
+    }
+
+    .badge {
+        bottom: 20px;
+        left: 20px;
+        padding: 12px 18px;
+    }
+
+    .quote {
+        font-size: 1.5rem;
+        padding-left: 20px;
+    }
+}
