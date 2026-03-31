@@ -6,6 +6,13 @@
     color: #f8f9fa;
     padding-top: 80px;
     /* Space for the navbar */
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+[data-theme='light'] .wrapper {
+    background: var(--color-black);
+    background-image: none;
+    color: var(--color-cream);
 }
 
 .sidebar {
@@ -20,6 +27,13 @@
     position: sticky;
     top: 80px;
     height: calc(100vh - 80px);
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+[data-theme='light'] .sidebar {
+    background: #ede8e0;
+    border-color: rgba(138, 111, 48, 0.2);
+    color: #1a1917;
 }
 
 .logo {
@@ -141,6 +155,12 @@
     -webkit-text-fill-color: transparent;
 }
 
+[data-theme='light'] .header h1 {
+    background: linear-gradient(to right, #1a1917, #8a6f2e);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
 .header p {
     color: #666;
     font-size: 1.1rem;
@@ -166,11 +186,22 @@
     overflow: hidden;
 }
 
+[data-theme='light'] .card {
+    background: #faf8f4;
+    border-color: rgba(138, 111, 48, 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
 .card:hover {
     transform: translateY(-10px);
     background: rgba(255, 255, 255, 0.05);
     border-color: rgba(199, 154, 76, 0.3);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='light'] .card:hover {
+    background: #ffffff;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
 }
 
 .cardIcon {

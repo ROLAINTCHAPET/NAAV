@@ -19,6 +19,13 @@
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+[data-theme='light'] .section {
+    background: #faf8f4;
+    border-color: rgba(138, 111, 48, 0.15);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .section h2 {
@@ -74,8 +81,21 @@
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+[data-theme='light'] .inputGroup input,
+[data-theme='light'] .inputGroup textarea,
+[data-theme='light'] .inputGroup select {
+    background: #ffffff;
+    border-color: rgba(138, 111, 48, 0.3);
+    color: #1a1917;
+}
+
 .inputGroup input::placeholder {
     color: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme='light'] .inputGroup input::placeholder,
+[data-theme='light'] .inputGroup textarea::placeholder {
+    color: #999;
 }
 
 .inputGroup input:focus,
@@ -169,6 +189,12 @@
     display: flex;
     flex-direction: column;
     gap: 25px;
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+[data-theme='light'] .card {
+    background: #faf8f4;
+    border-color: rgba(138, 111, 48, 0.15);
 }
 
 .card h3 {
