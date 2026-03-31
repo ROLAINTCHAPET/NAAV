@@ -48,9 +48,9 @@
 
 [data-theme='light'] .heroOverlay {
     background: linear-gradient(to top,
-            rgba(252, 250, 247, 1) 0%,
-            rgba(252, 250, 247, 0.4) 50%,
-            rgba(252, 250, 247, 0.1) 100%);
+            rgba(245, 241, 235, 1) 0%,
+            rgba(245, 241, 235, 0.65) 45%,
+            rgba(245, 241, 235, 0.15) 100%);
 }
 
 /* Ambient Orbs */

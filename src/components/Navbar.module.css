@@ -25,7 +25,13 @@
 }
 
 [data-theme='light'] .scrolled {
-    background: rgba(252, 250, 247, 0.8);
+    background: rgba(245, 241, 235, 0.95);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='light'] .mobileNav {
+    background: #f5f1eb;
+    box-shadow: none;
 }
 
 .navContainer {

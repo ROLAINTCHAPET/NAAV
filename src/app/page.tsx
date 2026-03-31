@@ -29,13 +29,13 @@ export default async function Home() {
         background: 'linear-gradient(135deg, #100d05 0%, #1a1206 40%, #0d100a 100%)',
         position: 'relative'
       }}>
-        <h2 className="section-title">Prêt à donner vie à votre <em>Projet</em> ?</h2>
-        <p style={{ color: 'var(--color-gray-light)', maxWidth: '500px', margin: '0 auto 40px', lineHeight: '1.8' }}>
+        <h2 className="section-title" style={{ color: '#f5f0e8' }}>Prêt à donner vie à votre <em>Projet</em> ?</h2>
+        <p style={{ color: '#a0a0a0', maxWidth: '500px', margin: '0 auto 40px', lineHeight: '1.8' }}>
           Contactez notre équipe d&apos;experts pour une consultation personnalisée et commencez votre voyage architectural dès aujourd&apos;hui.
         </p>
         <div style={{ display: 'flex', gap: '20px', justifyContent: 'center', flexWrap: 'wrap' }}>
           <a href="/contact" className="btn-primary">Démarrer un Projet</a>
-          <a href="/services" className="btn-outline">Nos Services</a>
+          <a href="/services" className="btn-outline" style={{ color: '#f5f0e8', borderColor: 'rgba(201,168,76,0.35)' }}>Nos Services</a>
         </div>
       </section>
     </>

@@ -95,6 +95,19 @@
     transition: all var(--transition-std);
 }
 
+[data-theme='light'] .form input,
+[data-theme='light'] .form select,
+[data-theme='light'] .form textarea {
+    background: #ffffff;
+    border-color: rgba(138, 111, 48, 0.30);
+    color: #1a1917;
+}
+
+[data-theme='light'] .form input::placeholder,
+[data-theme='light'] .form textarea::placeholder {
+    color: #888;
+}
+
 .form input:focus,
 .form select:focus,
 .form textarea:focus {
@@ -102,6 +115,13 @@
     border-color: var(--color-gold);
     background: rgba(255, 255, 255, 0.05);
     box-shadow: 0 0 15px rgba(201, 168, 76, 0.1);
+}
+
+[data-theme='light'] .form input:focus,
+[data-theme='light'] .form select:focus,
+[data-theme='light'] .form textarea:focus {
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(138, 111, 46, 0.12);
 }
 
 .checkboxGroup {

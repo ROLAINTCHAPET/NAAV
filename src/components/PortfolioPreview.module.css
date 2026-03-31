@@ -69,6 +69,10 @@
     transition: transform 0.8s ease;
 }
 
+[data-theme='light'] .imageWrapper {
+    background: linear-gradient(135deg, #d8d0c4 0%, #ede8e0 100%);
+}
+
 .card:hover .imageWrapper {
     transform: scale(1.05);
 }

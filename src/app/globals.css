@@ -39,25 +39,35 @@
 }
 
 [data-theme='light'] {
-  --color-black: #fcfaf7;
+  /* Backgrounds — section hierarchy clearly differentiated */
+  --color-black: #f5f1eb;
+  /* page base — warm parchment */
   --color-dark: #ffffff;
-  --color-anthracite: #f1ede9;
-  --color-card: #ffffff;
+  /* accent section (philosophy, process) — clean white */
+  --color-anthracite: #ede8e0;
+  /* alternate section — slightly darker parchment */
+  --color-card: #faf8f4;
+  /* card surface — faint ivory */
+
+  /* Text */
   --color-cream: #1a1917;
+  /* primary text — near-black */
   --color-white: #0a0a0a;
-  --color-gray: #666666;
-  /* Darkened from #8a8a8a */
-  --color-gray-light: #444444;
-  /* Darkened from #666666 */
-  --color-border: rgba(138, 111, 48, 0.15);
+  --color-gray: #555555;
+  /* body text — clearly readable */
+  --color-gray-light: #3a3a3a;
+  /* secondary text — strong contrast */
 
-  --shadow-gold: 0 10px 50px rgba(166, 139, 61, 0.15);
-  --shadow-card: 0 30px 90px rgba(0, 0, 0, 0.05);
+  /* Borders & shadows */
+  --color-border: rgba(138, 111, 48, 0.25);
+  /* more visible gold border */
+  --shadow-gold: 0 10px 50px rgba(166, 139, 61, 0.18);
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.10), 0 1px 4px rgba(0, 0, 0, 0.06);
 
-  /* Deeper gold for light mode readability */
-  --color-gold: #a68b3d;
-  --color-gold-light: #c9a84c;
-  --color-gold-dim: #7d662a;
+  /* Gold — darker for light background readability */
+  --color-gold: #8a6f2e;
+  --color-gold-light: #a68b3d;
+  --color-gold-dim: #6b5420;
 }
 
 /* ── Reset & Base ── */

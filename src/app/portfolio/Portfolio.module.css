@@ -76,6 +76,16 @@
     backdrop-filter: blur(10px);
 }
 
+[data-theme='light'] .searchInput {
+    background: #ffffff;
+    border-color: rgba(138, 111, 48, 0.30);
+    color: #1a1917;
+}
+
+[data-theme='light'] .searchInput::placeholder {
+    color: #888;
+}
+
 .searchBox:focus-within .searchIcon {
     color: var(--color-gold);
 }
@@ -84,6 +94,11 @@
     outline: none;
     border-color: var(--color-gold);
     background: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme='light'] .searchInput:focus {
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(138, 111, 46, 0.12);
 }
 
 .filterBar {
@@ -165,6 +180,11 @@
     justify-content: center;
     opacity: 0;
     transition: opacity var(--transition-std);
+}
+
+[data-theme='light'] .overlay {
+    background: rgba(245, 241, 235, 0.60);
+    backdrop-filter: blur(2px);
 }
 
 .card:hover .overlay {

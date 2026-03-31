@@ -64,6 +64,10 @@
     border-left: 2px solid var(--color-gold);
 }
 
+[data-theme='light'] .valueItem {
+    background: rgba(138, 111, 46, 0.06);
+}
+
 .valueItem span {
     font-family: var(--font-title);
     font-weight: 800;
@@ -91,6 +95,11 @@
     background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
     border-radius: var(--radius-lg);
     overflow: hidden;
+}
+
+[data-theme='light'] .visual {
+    background: linear-gradient(135deg, #d8cfc4 0%, #ede8e0 100%);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
 }
 
 .image {
@@ -131,6 +140,12 @@
     text-align: center;
     border-radius: var(--radius-lg);
     border: 1px solid var(--color-border);
+}
+
+[data-theme='light'] .missionCard {
+    background: linear-gradient(135deg, #faf8f4 0%, #ede8e0 100%);
+    border-color: rgba(138, 111, 48, 0.3);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
 }
 
 .missionTitle {
