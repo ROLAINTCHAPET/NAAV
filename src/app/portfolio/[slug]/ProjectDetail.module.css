@@ -9,7 +9,7 @@
 }
 
 .hero {
-    padding: 180px 0 60px;
+    padding: 160px 0 40px;
     background: var(--color-black);
 }
 
@@ -156,7 +156,7 @@
 }
 
 .contentSection {
-    padding: 100px 0;
+    padding: 20px 0 100px;
 }
 
 .contentGrid {

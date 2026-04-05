@@ -74,11 +74,28 @@ const Navbar = () => {
 
             {/* Mobile Menu Overlay */}
             <div className={`${styles.mobileNav} ${mobileMenuOpen ? styles.open : ''}`}>
-                <Link href="/" onClick={() => setMobileMenuOpen(false)}>Accueil</Link>
-                <Link href="/portfolio" onClick={() => setMobileMenuOpen(false)}>Portfolio</Link>
-                <Link href="/a-propos" onClick={() => setMobileMenuOpen(false)}>À Propos</Link>
-                <Link href="/services" onClick={() => setMobileMenuOpen(false)}>Services</Link>
-                <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>Contact</Link>
+                <div className={styles.mobileNavHeader}>
+                    <div className={styles.logo}>NA<span>AV</span></div>
+                </div>
+                <div className={styles.mobileNavLinks}>
+                    {[
+                        { href: '/', label: 'Accueil' },
+                        { href: '/portfolio', label: 'Portfolio' },
+                        { href: '/a-propos', label: 'À Propos' },
+                        { href: '/services', label: 'Services' },
+                        { href: '/contact', label: 'Contact', isCta: true }
+                    ].map((link, i) => (
+                        <Link
+                            key={link.href}
+                            href={link.href}
+                            onClick={() => setMobileMenuOpen(false)}
+                            style={{ transitionDelay: `${0.1 + i * 0.1}s` }}
+                            className={link.isCta ? styles.mobileCta : ''}
+                        >
+                            {link.label}
+                        </Link>
+                    ))}
+                </div>
             </div>
         </nav>
     );

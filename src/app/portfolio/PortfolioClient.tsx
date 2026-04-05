@@ -8,7 +8,7 @@ import { projects as mockProjects, Project } from '@/data/projects';
 import { getProjects } from '@/lib/supabase';
 import styles from './Portfolio.module.css';
 
-const categories = ['Tous', 'Résidentiel', 'Commercial', 'Intérieur', 'Urbanisme', 'Visualisation 3D'];
+const categories = ['Tous', 'Résidentiel', 'Commercial', 'Intérieur', 'Architecture paysagère', 'Autres'];
 
 const PortfolioClient = () => {
     const [allProjects, setAllProjects] = useState<Project[]>(mockProjects);

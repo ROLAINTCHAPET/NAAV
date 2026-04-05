@@ -70,6 +70,59 @@ export default async function ProjectDetailPage({ params }: Props) {
                 </div>
             </section>
 
+            {/* Content Section - MOVED UP */}
+            <section className={styles.contentSection}>
+                <div className={styles.container}>
+                    <div className={styles.contentGrid}>
+                        <div className={styles.mainContent}>
+                            <h2 className={styles.sectionHeading}>Aperçu du Projet</h2>
+                            <p className={styles.projectDesc}>{project.description}</p>
+
+                            <div className={styles.detailsBlock}>
+                                <div className={styles.block}>
+                                    <h3 className={styles.blockTitle}>Le Défi</h3>
+                                    <p>{project.challenge}</p>
+                                </div>
+                                <div className={styles.block}>
+                                    <h3 className={styles.blockTitle}>Notre Solution</h3>
+                                    <p>{project.solution}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <aside className={styles.sidebar}>
+                            <div className={styles.sidebarCard}>
+                                <h3>Intéressé par un projet similaire ?</h3>
+                                <p>Nos experts sont prêts à discuter de votre vision unique.</p>
+                                <Link href="/contact" className="btn-primary" style={{ width: '100%', justifyContent: 'center', marginTop: '20px' }}>
+                                    Démarrer un Projet
+                                </Link>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </section>
+
+            {/* Stats Bar */}
+            <section className={styles.statsBar}>
+                <div className={styles.container}>
+                    <div className={styles.statsGrid}>
+                        <div className={styles.statItem}>
+                            <span className={styles.statLabel}>Localisation</span>
+                            <span className={styles.statValue}>{project.location}</span>
+                        </div>
+                        <div className={styles.statItem}>
+                            <span className={styles.statLabel}>Année</span>
+                            <span className={styles.statValue}>{project.year}</span>
+                        </div>
+                        <div className={styles.statItem}>
+                            <span className={styles.statLabel}>Superficie</span>
+                            <span className={styles.statValue}>{project.area}</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             {/* Gallery Section */}
             <section className={styles.gallerySection}>
                 <div className={styles.container}>
@@ -107,60 +160,9 @@ export default async function ProjectDetailPage({ params }: Props) {
                 </section>
             )}
 
-            {/* Stats Bar */}
-            <section className={styles.statsBar}>
-                <div className={styles.container}>
-                    <div className={styles.statsGrid}>
-                        <div className={styles.statItem}>
-                            <span className={styles.statLabel}>Localisation</span>
-                            <span className={styles.statValue}>{project.location}</span>
-                        </div>
-                        <div className={styles.statItem}>
-                            <span className={styles.statLabel}>Année</span>
-                            <span className={styles.statValue}>{project.year}</span>
-                        </div>
-                        <div className={styles.statItem}>
-                            <span className={styles.statLabel}>Superficie</span>
-                            <span className={styles.statValue}>{project.area}</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Content Section */}
-            <section className={styles.contentSection}>
-                <div className={styles.container}>
-                    <div className={styles.contentGrid}>
-                        <div className={styles.mainContent}>
-                            <h2 className={styles.sectionHeading}>Aperçu du Projet</h2>
-                            <p className={styles.projectDesc}>{project.description}</p>
-
-                            <div className={styles.detailsBlock}>
-                                <div className={styles.block}>
-                                    <h3 className={styles.blockTitle}>Le Défi</h3>
-                                    <p>{project.challenge}</p>
-                                </div>
-                                <div className={styles.block}>
-                                    <h3 className={styles.blockTitle}>Notre Solution</h3>
-                                    <p>{project.solution}</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <aside className={styles.sidebar}>
-                            <div className={styles.sidebarCard}>
-                                <h3>Intéressé par un projet similaire ?</h3>
-                                <p>Nos experts sont prêts à discuter de votre vision unique.</p>
-                                <Link href="/contact" className="btn-primary" style={{ width: '100%', justifyContent: 'center', marginTop: '20px' }}>
-                                    Démarrer un Projet
-                                </Link>
-                            </div>
-                        </aside>
-                    </div>
-
-                    <Feedback projectId={project.id} projectTitle={project.title} />
-                </div>
-            </section>
+            <div className={styles.container}>
+                <Feedback projectId={project.id} projectTitle={project.title} />
+            </div>
 
             {/* CTA Bottom */}
             <section className={styles.nextCta}>

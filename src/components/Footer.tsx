@@ -47,8 +47,8 @@ const Footer = () => {
                             <h4>Contact</h4>
                             <ul>
                                 <li>contact@naav-architecture.com</li>
-                                <li>+221 33 123 45 67</li>
-                                <li>Dakar, Sénégal</li>
+                                <li>+237 680590758</li>
+                                <li>Yaoundé, Cameroun</li>
                             </ul>
                         </div>
                     </div>
