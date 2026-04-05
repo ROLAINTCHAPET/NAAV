@@ -1,27 +1,30 @@
 import styles from './MentionsLegales.module.css';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function MentionsLegalesPage() {
+    const { t } = useLanguage();
+
     return (
         <div className={styles.wrapper}>
             <div className={styles.container}>
-                <h1 className={styles.title}>Mentions Légales</h1>
-                <p className={styles.lastUpdate}>Dernière mise à jour : 21 Mars 2026</p>
+                <h1 className={styles.title}>{t('about.legal.title')}</h1>
+                <p className={styles.lastUpdate}>{t('about.legal.lastUpdate')} : 21 Mars 2026</p>
 
                 <section className={styles.section}>
-                    <h2>1. Éditeur du site</h2>
+                    <h2>{t('about.legal.s1Title')}</h2>
                     <p>
-                        Le site <strong>NAAV - New African Architecture Vision</strong> est édité par :<br />
-                        Société NAAV Architecture S.A.R.L.<br />
-                        Siège social : [Adresse à Dakar, Sénégal]<br />
+                        {t('about.legal.s1Text')}<br />
+                        {t('about.legal.s1Company')}<br />
+                        {t('about.legal.s1Address')}<br />
                         Immatriculée au RCCM : [Numéro]<br />
-                        Directeur de la publication : [Nom du Directeur]
+                        {t('about.legal.s1Director')} [Nom du Directeur]
                     </p>
                 </section>
 
                 <section className={styles.section}>
-                    <h2>2. Hébergement</h2>
+                    <h2>{t('about.legal.s2Title')}</h2>
                     <p>
-                        Le site est hébergé par :<br />
+                        {t('about.legal.s2Text')}<br />
                         Vercel Inc.<br />
                         440 N Barranca Ave #4133<br />
                         Covina, CA 91723<br />
@@ -30,16 +33,16 @@ export default function MentionsLegalesPage() {
                 </section>
 
                 <section className={styles.section}>
-                    <h2>3. Propriété Intellectuelle</h2>
+                    <h2>{t('about.legal.s3Title')}</h2>
                     <p>
-                        L&apos;ensemble de ce site relève de la législation internationale sur le droit d&apos;auteur et la propriété intellectuelle. Tous les droits de reproduction sont réservés, y compris pour les documents téléchargeables et les représentations iconographiques et photographiques.
+                        {t('about.legal.s3Text')}
                     </p>
                 </section>
 
                 <section className={styles.section}>
-                    <h2>4. Données Personnelles</h2>
+                    <h2>{t('about.legal.s4Title')}</h2>
                     <p>
-                        Conformément à la réglementation sur la protection des données (RGPD), vous disposez d&apos;un droit d&apos;accès, de rectification et de suppression des données vous concernant. Vous pouvez exercer ce droit en nous contactant via le formulaire de contact du site.
+                        {t('about.legal.s4Text')}
                     </p>
                 </section>
             </div>

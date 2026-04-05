@@ -1,4 +1,5 @@
 import styles from './Services.module.css';
+import { useLanguage } from '@/context/LanguageContext';
 
 const servicesList = [
     {
@@ -24,23 +25,25 @@ const servicesList = [
 ];
 
 const Services = () => {
+    const { t, dict } = useLanguage();
+
     return (
         <section className={styles.services}>
             <div className={styles.container}>
                 <div className={styles.header}>
                     <div className={styles.headerLeft}>
-                        <div className="section-eyebrow">Nos Services</div>
+                        <div className="section-eyebrow">{t('services.eyebrow')}</div>
                         <h2 className="section-title">
-                            Une Expertise <em>Pluridisciplinaire</em>
+                            {t('services.title')} <em>{t('services.titleEmphasis')}</em>
                         </h2>
                     </div>
                     <p className={styles.headerDesc}>
-                        Nous offrons une gamme complète de services pour transformer votre vision en réalité construite.
+                        {t('services.headerDesc')}
                     </p>
                 </div>
 
                 <div className={styles.grid}>
-                    {servicesList.map((service, i) => (
+                    {dict.services.items.map((service: any, i: number) => (
                         <div key={i} className={styles.card}>
                             <div className={styles.num}>{service.num}</div>
                             <h3 className={styles.name}>{service.name}</h3>

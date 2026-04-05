@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import styles from './Footer.module.css';
+import { useLanguage } from '@/context/LanguageContext';
 
 const Footer = () => {
     return (
@@ -11,7 +12,7 @@ const Footer = () => {
                             NA<span>AV</span>
                         </div>
                         <p className={styles.tagline}>
-                            Redéfinir l&apos;architecture africaine à travers l&apos;innovation, le respect de l&apos;héritage et l&apos;excellence durable.
+                            {t('footer.philosophy')}
                         </p>
                         <div className={styles.socials}>
                             {['instagram', 'linkedin', 'facebook'].map(social => (
@@ -26,12 +27,11 @@ const Footer = () => {
                         <div className={styles.col}>
                             <h4>Navigation</h4>
                             <ul>
-                                <li><Link href="/">Accueil</Link></li>
-                                <li><Link href="/portfolio">Portfolio</Link></li>
-                                <li><Link href="/blog">Blog</Link></li>
-                                <li><Link href="/temoignages">Témoignages</Link></li>
-                                <li><Link href="/a-propos">À Propos</Link></li>
-                                <li><Link href="/services">Services</Link></li>
+                                <li><Link href="/">{t('nav.home')}</Link></li>
+                                <li><Link href="/portfolio">{t('nav.portfolio')}</Link></li>
+                                <li><Link href="/a-propos">{t('nav.about')}</Link></li>
+                                <li><Link href="/services">{t('nav.services')}</Link></li>
+                                <li><Link href="/contact">{t('nav.contact')}</Link></li>
                             </ul>
                         </div>
                         <div className={styles.col}>
@@ -56,7 +56,7 @@ const Footer = () => {
 
                 <div className={styles.bottom}>
                     <div className={styles.copy}>
-                        © {new Date().getFullYear()} New African Architecture Vision. Tous droits réservés.
+                        © {new Date().getFullYear()} New African Architecture Vision. {t('footer.rights')}
                     </div>
                     <div className={styles.legal}>
                         <Link href="/mentions-legales">Mentions Légales</Link>

@@ -1,0 +1,100 @@
+{
+    "nav": {
+        "home": "Home",
+        "portfolio": "Portfolio",
+        "about": "About",
+        "services": "Services",
+        "contact": "Contact"
+    },
+    "hero": {
+        "eyebrow": "Vision of New African Architecture",
+        "title": "The Architecture of",
+        "titleEmphasis": "Tomorrow",
+        "subtitle": "Inspired by Africa",
+        "ctaPortfolio": "Explore Portfolio",
+        "ctaContact": "Contact Us",
+        "stats": {
+            "countries": "Countries active",
+            "delivered": "Projects Delivered",
+            "discover": "Discover"
+        }
+    },
+    "pitch": {
+        "eyebrow": "Our Vision",
+        "title": "Redefining the",
+        "titleEmphasis": "African",
+        "badgeTitle": "Standard of Excellence",
+        "badgeSubtitle": "Internationally recognized",
+        "quote": "Architecture is not just a question of space, it's a question of time, culture, and identity.",
+        "desc": "At New African Architecture Vision (NAAV), we merge modernity and heritage. Our projects are not simple buildings, but ecosystems designed to last and inspire. We transform constraints into unique architectural opportunities.",
+        "tags": {
+            "modernity": "Modernity",
+            "heritage": "Heritage",
+            "sustainability": "Sustainability",
+            "innovation": "Innovation"
+        }
+    },
+    "services": {
+        "eyebrow": "Our Services",
+        "title": "A",
+        "titleEmphasis": "Multidisciplinary",
+        "headerDesc": "We offer a complete range of services to transform your vision into a built reality.",
+        "items": [
+            {
+                "num": "01",
+                "name": "Architectural Design",
+                "desc": "From luxury residences to commercial complexes, we create iconic spaces."
+            },
+            {
+                "num": "02",
+                "name": "Interior Design",
+                "desc": "Harmonious interior design combining modern aesthetics with absolute comfort."
+            },
+            {
+                "num": "03",
+                "name": "3D Visualization",
+                "desc": "Photorealistic renderings and virtual tours to bring your projects to life."
+            },
+            {
+                "num": "04",
+                "name": "Consultancy & Strategy",
+                "desc": "Comprehensive support in urban development and project viability."
+            }
+        ]
+    },
+    "partners": {
+        "title": "Trusted Partners"
+    },
+    "about": {
+        "heroEyebrow": "Our Story",
+        "heroTitle": "A Vision for",
+        "heroTitleEmphasis": "African Architecture",
+        "heroLead": "Founded with the ambition to redefine the continent's urban landscape, NAAV merges Africa's rich cultural heritage with 21st-century cutting-edge technologies.",
+        "philosophy": {
+            "title": "Our Philosophy",
+            "text": "For us, architecture goes beyond simple construction. It is a dialogue between the past, present, and future. We believe in architecture that breathes, respects its environment, and inspires future generations.",
+            "values": {
+                "v1": {
+                    "title": "Excellence",
+                    "desc": "A standard of quality without compromise in every detail."
+                },
+                "v2": {
+                    "title": "Innovation",
+                    "desc": "The use of VR and BIM for absolute precision."
+                },
+                "v3": {
+                    "title": "Heritage",
+                    "desc": "Recovering ancestral codes to magnify them tomorrow."
+                }
+            }
+        },
+        "mission": {
+            "text": "Architecture is the silent witness of our culture and the most powerful tool to shape our future.",
+            "author": "NAAV Creative Direction"
+        }
+    },
+    "footer": {
+        "rights": "All rights reserved.",
+        "philosophy": "Redefining African architecture through innovation and excellence."
+    }
+}

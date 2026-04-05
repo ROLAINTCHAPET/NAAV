@@ -1,24 +1,27 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './PortfolioPreview.module.css';
+import { useLanguage } from '@/context/LanguageContext';
 
 interface PortfolioPreviewProps {
     projects: any[];
 }
 
 const PortfolioPreview = ({ projects }: PortfolioPreviewProps) => {
+    const { t } = useLanguage();
+
     return (
         <section className={styles.portfolio}>
             <div className={styles.container}>
                 <div className={styles.header}>
                     <div className={styles.headerLeft}>
-                        <div className="section-eyebrow">Réalisations</div>
+                        <div className="section-eyebrow">{t('portfolioPreview.eyebrow')}</div>
                         <h2 className="section-title">
-                            Projets <em>Emblématiques</em>
+                            {t('portfolioPreview.title')} <em>{t('portfolioPreview.titleEmphasis')}</em>
                         </h2>
                     </div>
                     <Link href="/portfolio" className={styles.seeAll}>
-                        Voir tout le portfolio
+                        {t('portfolioPreview.seeAll')}
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <line x1="5" y1="12" x2="19" y2="12"></line>
                             <polyline points="12 5 19 12 12 19"></polyline>

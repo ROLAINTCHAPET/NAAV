@@ -5,12 +5,15 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import styles from './Navbar.module.css';
 import ThemeToggle from './ui/ThemeToggle';
+import LanguageToggle from './ui/LanguageToggle';
+import { useLanguage } from '@/context/LanguageContext';
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const router = useRouter();
     const [clickCount, setClickCount] = useState(0);
+    const { t } = useLanguage();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -48,17 +51,19 @@ const Navbar = () => {
                 </Link>
 
                 <div className={styles.navLinks}>
-                    <Link href="/">Accueil</Link>
-                    <Link href="/portfolio">Portfolio</Link>
-                    <Link href="/a-propos">À Propos</Link>
-                    <Link href="/services">Services</Link>
-                    <Link href="/contact" className={styles.cta}>Contact</Link>
-                    <div className={styles.desktopToggle}>
+                    <Link href="/">{t('nav.home')}</Link>
+                    <Link href="/portfolio">{t('nav.portfolio')}</Link>
+                    <Link href="/a-propos">{t('nav.about')}</Link>
+                    <Link href="/services">{t('nav.services')}</Link>
+                    <Link href="/contact" className={styles.cta}>{t('nav.contact')}</Link>
+                    <div className={styles.desktopControls}>
+                        <LanguageToggle />
                         <ThemeToggle />
                     </div>
                 </div>
 
                 <div className={styles.mobileActions}>
+                    <LanguageToggle />
                     <ThemeToggle />
                     <button
                         className={`${styles.hamburger} ${mobileMenuOpen ? styles.open : ''}`}
@@ -79,11 +84,11 @@ const Navbar = () => {
                 </div>
                 <div className={styles.mobileNavLinks}>
                     {[
-                        { href: '/', label: 'Accueil' },
-                        { href: '/portfolio', label: 'Portfolio' },
-                        { href: '/a-propos', label: 'À Propos' },
-                        { href: '/services', label: 'Services' },
-                        { href: '/contact', label: 'Contact', isCta: true }
+                        { href: '/', key: 'nav.home' },
+                        { href: '/portfolio', key: 'nav.portfolio' },
+                        { href: '/a-propos', key: 'nav.about' },
+                        { href: '/services', key: 'nav.services' },
+                        { href: '/contact', key: 'nav.contact', isCta: true }
                     ].map((link, i) => (
                         <Link
                             key={link.href}
@@ -92,7 +97,7 @@ const Navbar = () => {
                             style={{ transitionDelay: `${0.1 + i * 0.1}s` }}
                             className={link.isCta ? styles.mobileCta : ''}
                         >
-                            {link.label}
+                            {t(link.key)}
                         </Link>
                     ))}
                 </div>

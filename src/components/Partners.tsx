@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import styles from './Partners.module.css';
+import { useLanguage } from '@/context/LanguageContext';
 
 const partners = [
     { name: 'Amani Architects', logo: '/images/partners/amani.png' },
@@ -9,12 +10,14 @@ const partners = [
 ];
 
 const Partners = () => {
+    const { t } = useLanguage();
+
     return (
         <section className={styles.partners}>
             <div className={styles.container}>
                 <div className={styles.header}>
-                    <span className="section-eyebrow">Collaboration</span>
-                    <h2 className={styles.title}>Partenaires de Confiance</h2>
+                    <span className="section-eyebrow">{t('partners.eyebrow')}</span>
+                    <h2 className={styles.title}>{t('partners.title')}</h2>
                 </div>
 
                 <div className={styles.logosGrid}>

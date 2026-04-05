@@ -1,7 +1,10 @@
 import Image from 'next/image';
 import styles from './Pitch.module.css';
+import { useLanguage } from '@/context/LanguageContext';
 
 const Pitch = () => {
+    const { t } = useLanguage();
+
     return (
         <section className={styles.pitch}>
             <div className={styles.container}>
@@ -20,28 +23,28 @@ const Pitch = () => {
                                 </svg>
                             </div>
                             <div className={styles.badgeText}>
-                                <strong>Standard d&apos;Excellence</strong>
-                                Reconnu internationalement
+                                <strong>{t('pitch.badgeTitle')}</strong>
+                                {t('pitch.badgeSubtitle')}
                             </div>
                         </div>
                     </div>
 
                     <div className={styles.content}>
-                        <div className="section-eyebrow">Notre Vision</div>
+                        <div className="section-eyebrow">{t('pitch.eyebrow')}</div>
                         <h2 className="section-title">
-                            Redéfinir le paysage urbain <em>Africain</em>
+                            {t('pitch.title')} <em>{t('pitch.titleEmphasis')}</em>
                         </h2>
                         <div className={styles.quote}>
-                            &quot;L&apos;architecture n&apos;est pas seulement une question d&apos;espace, c&apos;est une question de temps, de culture et d&apos;identité.&quot;
+                            &quot;{t('pitch.quote')}&quot;
                         </div>
                         <p className={styles.desc}>
-                            Chez New African Architecture Vision (NAAV), nous fusionnons modernité et héritage. Nos projets ne sont pas de simples bâtiments, mais des écosystèmes conçus pour durer et inspirer. Nous transformons les contraintes en opportunités architecturales uniques.
+                            {t('pitch.desc')}
                         </p>
                         <div className={styles.tags}>
-                            <span className={styles.tag}>Modernité</span>
-                            <span className={styles.tag}>Héritage</span>
-                            <span className={styles.tag}>Durabilité</span>
-                            <span className={styles.tag}>Innovation</span>
+                            <span className={styles.tag}>{t('pitch.tags.modernity')}</span>
+                            <span className={styles.tag}>{t('pitch.tags.heritage')}</span>
+                            <span className={styles.tag}>{t('pitch.tags.sustainability')}</span>
+                            <span className={styles.tag}>{t('pitch.tags.innovation')}</span>
                         </div>
                     </div>
                 </div>

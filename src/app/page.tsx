@@ -13,7 +13,7 @@ export default async function Home() {
 
   // Use featured projects from Supabase or top 3 from mocks
   const featured = supabaseProjects.length > 0
-    ? supabaseProjects.filter(p => p.featured).slice(0, 3)
+    ? supabaseProjects.filter((p: any) => p.featured).slice(0, 3)
     : mockProjects.slice(0, 3);
 
   return (

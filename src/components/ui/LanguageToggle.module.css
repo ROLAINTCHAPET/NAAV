@@ -1,0 +1,37 @@
+.toggleContainer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-title);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+}
+
+.langBtn {
+    color: var(--color-gray);
+    transition: all var(--transition-std);
+    opacity: 0.6;
+}
+
+.langBtn:hover {
+    color: var(--color-gold);
+    opacity: 1;
+}
+
+.langBtn.active {
+    color: var(--color-gold);
+    opacity: 1;
+}
+
+.divider {
+    color: var(--color-border);
+    font-weight: 400;
+    pointer-events: none;
+}
+
+@media (max-width: 1024px) {
+    .toggleContainer {
+        font-size: 0.8rem;
+    }
+}

@@ -1,0 +1,100 @@
+{
+    "nav": {
+        "home": "Accueil",
+        "portfolio": "Portfolio",
+        "about": "À Propos",
+        "services": "Services",
+        "contact": "Contact"
+    },
+    "hero": {
+        "eyebrow": "Vision de l'Architecture Nouvelle en Afrique",
+        "title": "L'Architecture de",
+        "titleEmphasis": "Demain",
+        "subtitle": "Inspirée par l'Afrique",
+        "ctaPortfolio": "Explorer le Portfolio",
+        "ctaContact": "Nous Contacter",
+        "stats": {
+            "countries": "Pays d'intervention",
+            "delivered": "Projets Livrés",
+            "discover": "Découvrir"
+        }
+    },
+    "pitch": {
+        "eyebrow": "Notre Vision",
+        "title": "Redéfinir le paysage urbain",
+        "titleEmphasis": "Africain",
+        "badgeTitle": "Standard d'Excellence",
+        "badgeSubtitle": "Reconnu internationalement",
+        "quote": "L'architecture n'est pas seulement une question d'espace, c'est une question de temps, de culture et d'identité.",
+        "desc": "Chez New African Architecture Vision (NAAV), nous fusionnons modernité et héritage. Nos projets ne sont pas de simples bâtiments, mais des écosystèmes conçus pour durer et inspirer. Nous transformons les contraintes en opportunités architecturales uniques.",
+        "tags": {
+            "modernity": "Modernité",
+            "heritage": "Héritage",
+            "sustainability": "Durabilité",
+            "innovation": "Innovation"
+        }
+    },
+    "services": {
+        "eyebrow": "Nos Services",
+        "title": "Une Expertise",
+        "titleEmphasis": "Pluridisciplinaire",
+        "headerDesc": "Nous offrons une gamme complète de services pour transformer votre vision en réalité construite.",
+        "items": [
+            {
+                "num": "01",
+                "name": "Conception Architecturale",
+                "desc": "Des résidences de luxe aux complexes commerciaux, nous créons des espaces iconiques."
+            },
+            {
+                "num": "02",
+                "name": "Design d’Intérieur",
+                "desc": "Un aménagement intérieur harmonieux qui allie esthétique moderne et confort absolu."
+            },
+            {
+                "num": "03",
+                "name": "Visualisation 3D",
+                "desc": "Des rendus photoréalistes et des visites virtuelles pour donner vie à vos projets."
+            },
+            {
+                "num": "04",
+                "name": "Conseil & Stratégie",
+                "desc": "Accompagnement complet dans le développement urbain et la viabilité des projets."
+            }
+        ]
+    },
+    "partners": {
+        "title": "Partenaires de Confiance"
+    },
+    "about": {
+        "heroEyebrow": "Notre Histoire",
+        "heroTitle": "Une Vision pour l'Architecture",
+        "heroTitleEmphasis": "Africaine",
+        "heroLead": "Fondé avec l'ambition de redéfinir le paysage urbain du continent, NAAV fusionne l'héritage culturel riche de l'Afrique avec les technologies de pointe du 21ème siècle.",
+        "philosophy": {
+            "title": "Notre Philosophie",
+            "text": "Pour nous, l'architecture dépasse la simple construction. C'est un dialogue entre le passé, le présent et le futur. Nous croyons en une architecture qui respire, qui respecte son environnement et qui inspire les générations futures.",
+            "values": {
+                "v1": {
+                    "title": "Excellence",
+                    "desc": "Un standard de qualité sans compromis dans chaque détail."
+                },
+                "v2": {
+                    "title": "Innovation",
+                    "desc": "L'usage de la VR et du BIM pour une précision absolue."
+                },
+                "v3": {
+                    "title": "Héritage",
+                    "desc": "Récupérer les codes ancestraux pour les magnifier demain."
+                }
+            }
+        },
+        "mission": {
+            "text": "L'architecture est le témoin silencieux de notre culture et l'outil le plus puissant pour façonner notre futur.",
+            "author": "Direction Créative NAAV"
+        }
+    },
+    "footer": {
+        "rights": "Tous droits réservés.",
+        "philosophy": "Redéfinir l'architecture africaine par l'innovation et l'excellence."
+    }
+}

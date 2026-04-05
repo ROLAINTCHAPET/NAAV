@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SecretGateway from "@/components/admin/SecretGateway";
 import { ThemeProvider } from "@/context/ThemeContext";
+import { LanguageProvider } from "@/context/LanguageContext";
 
 export const metadata: Metadata = {
   title: "NAAV — New African Architecture Vision",
@@ -18,26 +19,31 @@ export default function RootLayout({
   return (
     <html lang="fr" suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{
-          __html: `
-            (function() {
-              try {
-                var theme = localStorage.getItem('theme');
-                var supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
-                if (!theme && supportDarkMode) theme = 'dark';
-                if (!theme) theme = 'light';
-                document.documentElement.setAttribute('data-theme', theme);
-              } catch (e) {}
-            })();
-          `
-        }} />
+        <script
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var theme = localStorage.getItem('theme');
+                  var supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+                  if (!theme && supportDarkMode) theme = 'dark';
+                  if (!theme) theme = 'light';
+                  document.documentElement.setAttribute('data-theme', theme);
+                } catch (e) {}
+              })();
+            `
+          }}
+        />
       </head>
       <body>
         <ThemeProvider>
-          <SecretGateway />
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
+          <LanguageProvider>
+            <SecretGateway />
+            <Navbar />
+            <main>{children}</main>
+            <Footer />
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>

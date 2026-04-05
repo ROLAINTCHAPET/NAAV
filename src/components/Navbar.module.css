@@ -201,14 +201,17 @@
     letter-spacing: 0.2em;
 }
 
-.desktopToggle {
+.desktopControls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
     margin-left: 20px;
 }
 
 .mobileActions {
     display: none;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
 }
 
 @media (max-width: 1024px) {
