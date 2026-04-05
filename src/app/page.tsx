@@ -4,6 +4,7 @@ import Services from "@/components/Services";
 import PortfolioPreview from "@/components/PortfolioPreview";
 import { getProjects } from "@/lib/supabase";
 import { projects as mockProjects } from "@/data/projects";
+import Partners from "@/components/Partners";
 
 export const revalidate = 60; // Dynamic revalidation every minute
 
@@ -21,6 +22,7 @@ export default async function Home() {
       <Pitch />
       <PortfolioPreview projects={featured} />
       <Services />
+      <Partners />
 
       {/* CTA Section */}
       <section style={{
