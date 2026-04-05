@@ -1,8 +1,6 @@
-'use client';
-
-import { useState } from 'react';
 import styles from './Feedback.module.css';
 import { submitProjectFeedback } from '@/app/portfolio/actions';
+import { useLanguage } from '@/context/LanguageContext';
 
 interface Props {
     projectId: string;
@@ -10,6 +8,7 @@ interface Props {
 }
 
 const Feedback = ({ projectId, projectTitle }: Props) => {
+    const { t } = useLanguage();
     const [rating, setRating] = useState(0);
     const [hover, setHover] = useState(0);
     const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -18,7 +17,7 @@ const Feedback = ({ projectId, projectTitle }: Props) => {
     async function handleAction(formData: FormData) {
         if (rating === 0) {
             setStatus('error');
-            setMessage("Veuillez sélectionner une note.");
+            setMessage(t('feedback.rateRequired'));
             return;
         }
 
@@ -31,32 +30,32 @@ const Feedback = ({ projectId, projectTitle }: Props) => {
             const result = await submitProjectFeedback(formData);
             if (result.success) {
                 setStatus('success');
-                setMessage(result.message);
+                setMessage(result.message || t('feedback.successMsg'));
             } else {
                 setStatus('error');
-                setMessage("Une erreur est survenue.");
+                setMessage(t('feedback.errorMsg'));
             }
         } catch (err) {
             setStatus('error');
-            setMessage("Impossible d'envoyer votre avis.");
+            setMessage(t('feedback.unexpectedError'));
         }
     }
 
     return (
         <div className={styles.feedbackContainer}>
-            <h2 className={styles.title}>Donner votre avis</h2>
-            <p className={styles.subtitle}>Que pensez-vous du projet <strong>{projectTitle}</strong> ?</p>
+            <h2 className={styles.title}>{t('feedback.title')}</h2>
+            <p className={styles.subtitle}>{t('feedback.subtitle')} <strong>{projectTitle}</strong> ?</p>
 
             {status === 'success' ? (
                 <div className={styles.success}>
                     <div className={styles.icon}>✓</div>
                     <p>{message}</p>
-                    <button onClick={() => setStatus('idle')} className="btn-outline">Donner un autre avis</button>
+                    <button onClick={() => setStatus('idle')} className="btn-outline">{t('feedback.sendAnother')}</button>
                 </div>
             ) : (
                 <form action={handleAction} className={styles.form}>
                     <div className={styles.ratingBox}>
-                        <label>Votre Note :</label>
+                        <label>{t('feedback.ratingLabel')}</label>
                         <div className={styles.stars}>
                             {[1, 2, 3, 4, 5].map((star) => (
                                 <button
@@ -74,13 +73,13 @@ const Feedback = ({ projectId, projectTitle }: Props) => {
                     </div>
 
                     <div className={styles.inputGroup}>
-                        <input type="text" name="name" placeholder="Votre Nom" required className={styles.input} />
+                        <input type="text" name="name" placeholder={t('feedback.namePlaceholder')} required className={styles.input} />
                     </div>
 
                     <div className={styles.inputGroup}>
                         <textarea
                             name="comment"
-                            placeholder="Votre avis sur l'architecture, le design ou l'innovation..."
+                            placeholder={t('feedback.commentPlaceholder')}
                             required
                             rows={4}
                             className={styles.textarea}
@@ -95,7 +94,7 @@ const Feedback = ({ projectId, projectTitle }: Props) => {
                         disabled={status === 'loading'}
                         style={{ width: '100%', justifyContent: 'center' }}
                     >
-                        {status === 'loading' ? 'Envoi en cours...' : 'Envoyer mon avis'}
+                        {status === 'loading' ? t('feedback.sending') : t('feedback.submit')}
                     </button>
                 </form>
             )}

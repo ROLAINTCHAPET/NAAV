@@ -7,12 +7,21 @@ import { Search, Loader2 } from 'lucide-react';
 import { projects as mockProjects, Project } from '@/data/projects';
 import { getProjects } from '@/lib/supabase';
 import styles from './Portfolio.module.css';
+import { useLanguage } from '@/context/LanguageContext';
 
-const categories = ['Tous', 'Résidentiel', 'Commercial', 'Intérieur', 'Architecture paysagère', 'Autres'];
+const categoryKeys = [
+    { key: 'all', label: 'portfolio.categories.all' },
+    { key: 'Résidentiel', label: 'portfolio.categories.residential' },
+    { key: 'Commercial', label: 'portfolio.categories.commercial' },
+    { key: 'Intérieur', label: 'portfolio.categories.interior' },
+    { key: 'Architecture paysagère', label: 'portfolio.categories.landscape' },
+    { key: 'Autres', label: 'portfolio.categories.other' }
+];
 
 const PortfolioClient = () => {
+    const { t } = useLanguage();
     const [allProjects, setAllProjects] = useState<Project[]>(mockProjects);
-    const [activeCategory, setActiveCategory] = useState('Tous');
+    const [activeCategory, setActiveCategory] = useState('all');
     const [searchQuery, setSearchQuery] = useState('');
     const [visibleCount, setVisibleCount] = useState(6);
     const [loading, setLoading] = useState(true);
@@ -45,7 +54,7 @@ const PortfolioClient = () => {
     }, []);
 
     const filteredProjects = allProjects.filter(p => {
-        const matchesCategory = activeCategory === 'Tous' || p.category === activeCategory;
+        const matchesCategory = activeCategory === 'all' || p.category === activeCategory;
         const matchesSearch = p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
             p.description.toLowerCase().includes(searchQuery.toLowerCase());
         return matchesCategory && matchesSearch;
@@ -62,7 +71,7 @@ const PortfolioClient = () => {
                         <Search className={styles.searchIcon} size={20} />
                         <input
                             type="text"
-                            placeholder="Rechercher un projet..."
+                            placeholder={t('portfolio.searchPlaceholder')}
                             value={searchQuery}
                             onChange={(e) => {
                                 setSearchQuery(e.target.value);
@@ -73,16 +82,16 @@ const PortfolioClient = () => {
                     </div>
 
                     <div className={styles.filterBar}>
-                        {categories.map(cat => (
+                        {categoryKeys.map(cat => (
                             <button
-                                key={cat}
-                                className={`${styles.filterBtn} ${activeCategory === cat ? styles.active : ''}`}
+                                key={cat.key}
+                                className={`${styles.filterBtn} ${activeCategory === cat.key ? styles.active : ''}`}
                                 onClick={() => {
-                                    setActiveCategory(cat);
+                                    setActiveCategory(cat.key);
                                     setVisibleCount(6);
                                 }}
                             >
-                                {cat}
+                                {t(cat.label)}
                             </button>
                         ))}
                     </div>
@@ -91,7 +100,7 @@ const PortfolioClient = () => {
                 {loading && (
                     <div className={styles.loader}>
                         <Loader2 className="animate-spin" size={40} />
-                        <p>Chargement des projets...</p>
+                        <p>{t('portfolio.loading')}</p>
                     </div>
                 )}
 
@@ -108,7 +117,7 @@ const PortfolioClient = () => {
                                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                 />
                                 <div className={styles.overlay}>
-                                    <div className={styles.viewLabel}>Voir le projet</div>
+                                    <div className={styles.viewLabel}>{t('portfolio.viewProject')}</div>
                                 </div>
                             </div>
                             <div className={styles.info}>
@@ -127,7 +136,7 @@ const PortfolioClient = () => {
                             className="btn-outline"
                             onClick={() => setVisibleCount(prev => prev + 6)}
                         >
-                            Charger plus de projets
+                            {t('portfolio.loadMore')}
                         </button>
                     </div>
                 )}

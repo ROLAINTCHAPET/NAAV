@@ -1,29 +1,6 @@
 import styles from './Services.module.css';
 import { useLanguage } from '@/context/LanguageContext';
 
-const servicesList = [
-    {
-        num: '01',
-        name: 'Conception Architecturale',
-        desc: 'Des résidences de luxe aux complexes commerciaux, nous créons des espaces iconiques.'
-    },
-    {
-        num: '02',
-        name: 'Design d’Intérieur',
-        desc: 'Un aménagement intérieur harmonieux qui allie esthétique moderne et confort absolu.'
-    },
-    {
-        num: '03',
-        name: 'Visualisation 3D',
-        desc: 'Des rendus photoréalistes et des visites virtuelles pour donner vie à vos projets.'
-    },
-    {
-        num: '04',
-        name: 'Conseil & Stratégie',
-        desc: 'Accompagnement complet dans le développement urbain et la viabilité des projets.'
-    }
-];
-
 const Services = () => {
     const { t, dict } = useLanguage();
 

@@ -1,10 +1,10 @@
-'use client';
-
 import { useState } from 'react';
 import styles from './Contact.module.css';
 import { sendContactEmail } from './actions';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function ContactPage() {
+    const { t } = useLanguage();
     const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
     const [message, setMessage] = useState('');
 
@@ -14,14 +14,14 @@ export default function ContactPage() {
             const result = await sendContactEmail(formData) as any;
             if (result.success) {
                 setStatus('success');
-                setMessage(result.simulated ? "(Simulation) Message envoyé avec succès !" : "Votre message a été envoyé avec succès ! Nous vous recontacterons rapidement.");
+                setMessage(result.simulated ? t('contact.form.successSimulation') : t('contact.form.successMsg'));
             } else {
                 setStatus('error');
-                setMessage(result.error || "Erreur lors de l'envoi.");
+                setMessage(result.error || t('contact.form.errorMsg'));
             }
         } catch (err) {
             setStatus('error');
-            setMessage("Une erreur inattendue est survenue.");
+            setMessage(t('contact.form.unexpectedError'));
         }
     }
 
@@ -29,10 +29,10 @@ export default function ContactPage() {
         <div className={styles.contactWrapper}>
             <section className={styles.hero}>
                 <div className={styles.container}>
-                    <div className="section-eyebrow">Contactez-nous</div>
-                    <h1 className="section-title">Donnez vie à vos <em>Ambitions</em></h1>
+                    <div className="section-eyebrow">{t('contact.heroEyebrow')}</div>
+                    <h1 className="section-title">{t('contact.heroTitle')} <em>{t('contact.heroTitleEmphasis')}</em></h1>
                     <p className={styles.heroLead}>
-                        Que vous soyez au début de votre réflexion ou prêt à lancer les travaux, notre équipe est là pour vous accompagner dans la création de votre projet architectural unique.
+                        {t('contact.heroLead')}
                     </p>
                 </div>
             </section>
@@ -43,18 +43,18 @@ export default function ContactPage() {
                         {/* Info Column */}
                         <div className={styles.infoCol}>
                             <div className={styles.infoItem}>
-                                <h3>Nos Bureaux</h3>
-                                <p>Avenue Cheikh Anta Diop, Dakar, Sénégal</p>
+                                <h3>{t('contact.info.offices')}</h3>
+                                <p>{t('contact.info.address')}</p>
                             </div>
                             <div className={styles.infoItem}>
-                                <h3>Contact Direct</h3>
+                                <h3>{t('contact.info.direct')}</h3>
                                 <p>contact@naav-architecture.com</p>
                                 <p>+221 33 123 45 67</p>
                             </div>
                             <div className={styles.infoItem}>
-                                <h3>Heures d&apos;ouverture</h3>
-                                <p>Lundi — Vendredi : 09h00 - 18h00</p>
-                                <p>Samedi : Sur rendez-vous uniquement</p>
+                                <h3>{t('contact.info.hours')}</h3>
+                                <p>{t('contact.info.weekdays')}</p>
+                                <p>{t('contact.info.saturday')}</p>
                             </div>
                         </div>
 
@@ -63,47 +63,47 @@ export default function ContactPage() {
                             {status === 'success' ? (
                                 <div className={styles.successMessage}>
                                     <div className={styles.successIcon}>✓</div>
-                                    <h2>Merci !</h2>
+                                    <h2>{t('contact.form.success')}</h2>
                                     <p>{message}</p>
                                     <button onClick={() => setStatus('idle')} className="btn-outline" style={{ marginTop: '20px' }}>
-                                        Envoyer un autre message
+                                        {t('contact.form.sendAnother')}
                                     </button>
                                 </div>
                             ) : (
                                 <form action={handleSubmit} className={styles.form}>
                                     <div className={styles.formGrid}>
                                         <div className={styles.inputGroup}>
-                                            <label htmlFor="name">Nom Complet *</label>
-                                            <input type="text" id="name" name="name" placeholder="Votre nom" required />
+                                            <label htmlFor="name">{t('contact.form.name')}</label>
+                                            <input type="text" id="name" name="name" placeholder={t('contact.form.namePlaceholder')} required />
                                         </div>
                                         <div className={styles.inputGroup}>
-                                            <label htmlFor="email">Email Professionnel *</label>
-                                            <input type="email" id="email" name="email" placeholder="votre@email.com" required />
+                                            <label htmlFor="email">{t('contact.form.email')}</label>
+                                            <input type="email" id="email" name="email" placeholder={t('contact.form.emailPlaceholder')} required />
                                         </div>
                                         <div className={styles.inputGroup}>
-                                            <label htmlFor="phone">Téléphone</label>
-                                            <input type="tel" id="phone" name="phone" placeholder="+221 ..." />
+                                            <label htmlFor="phone">{t('contact.form.phone')}</label>
+                                            <input type="tel" id="phone" name="phone" placeholder={t('contact.form.phonePlaceholder')} />
                                         </div>
                                         <div className={styles.inputGroup}>
-                                            <label htmlFor="project-type">Type de Projet</label>
+                                            <label htmlFor="project-type">{t('contact.form.projectType')}</label>
                                             <select id="project-type" name="project-type">
-                                                <option value="residentiel">Résidentiel de luxe</option>
-                                                <option value="commercial">Commercial / Bureaux</option>
-                                                <option value="interieur">Design d&apos;Intérieur</option>
-                                                <option value="urbanisme">Urbanisme / Développement</option>
-                                                <option value="autre">Autre</option>
+                                                <option value="residentiel">{t('contact.form.types.luxury')}</option>
+                                                <option value="commercial">{t('contact.form.types.commercial')}</option>
+                                                <option value="interieur">{t('contact.form.types.interior')}</option>
+                                                <option value="urbanisme">{t('contact.form.types.urban')}</option>
+                                                <option value="autre">{t('contact.form.types.other')}</option>
                                             </select>
                                         </div>
                                     </div>
 
                                     <div className={styles.inputGroup} style={{ marginTop: '24px' }}>
-                                        <label htmlFor="message">Décrivez votre projet *</label>
-                                        <textarea id="message" name="message" rows={5} placeholder="Parlez-nous de votre vision, de la localisation et de vos attentes..." required></textarea>
+                                        <label htmlFor="message">{t('contact.form.message')}</label>
+                                        <textarea id="message" name="message" rows={5} placeholder={t('contact.form.messagePlaceholder')} required></textarea>
                                     </div>
 
                                     <div className={styles.checkboxGroup}>
                                         <input type="checkbox" id="devis" name="devis" />
-                                        <label htmlFor="devis">Je souhaite recevoir un devis estimatif préliminaire</label>
+                                        <label htmlFor="devis">{t('contact.form.estimate')}</label>
                                     </div>
 
                                     {status === 'error' && <p className={styles.errorMessage}>{message}</p>}
@@ -114,7 +114,7 @@ export default function ContactPage() {
                                         disabled={status === 'loading'}
                                         style={{ width: '100%', marginTop: '30px', justifyContent: 'center' }}
                                     >
-                                        {status === 'loading' ? 'Envoi en cours...' : 'Envoyer ma Demande'}
+                                        {status === 'loading' ? t('contact.form.sending') : t('contact.form.submit')}
                                     </button>
                                 </form>
                             )}
