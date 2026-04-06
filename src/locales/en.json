@@ -96,5 +96,162 @@
     "footer": {
         "rights": "All rights reserved.",
         "philosophy": "Redefining African architecture through innovation and excellence."
+    },
+    "legal": {
+        "title": "Legal Notice",
+        "lastUpdate": "Last update",
+        "s1Title": "1. Site Publisher",
+        "s1Text": "The NAAV - New African Architecture Vision website is published by:",
+        "s1Company": "NAAV Architecture S.A.R.L.",
+        "s1Address": "Head office: [Address in Dakar, Senegal]",
+        "s1Director": "Publishing Director:",
+        "s2Title": "2. Hosting",
+        "s2Text": "The site is hosted by:",
+        "s3Title": "3. Intellectual Property",
+        "s3Text": "The entirety of this site falls under international legislation on copyright and intellectual property. All reproduction rights are reserved, including for downloadable documents and iconographic and photographic representations.",
+        "s4Title": "4. Personal Data",
+        "s4Text": "In accordance with data protection regulations (GDPR), you have the right to access, rectify, and delete data concerning you. You can exercise this right by contacting us via the site's contact form."
+    },
+    "contact": {
+        "heroEyebrow": "Contact Us",
+        "heroTitle": "Bring your",
+        "heroTitleEmphasis": "Ambitions to Life",
+        "heroLead": "Whether you're at the beginning of your journey or ready to break ground, our team is here to guide you in creating your unique architectural project.",
+        "info": {
+            "offices": "Our Offices",
+            "address": "Avenue Cheikh Anta Diop, Dakar, Senegal",
+            "direct": "Direct Contact",
+            "hours": "Opening Hours",
+            "weekdays": "Monday — Friday: 09:00 AM - 06:00 PM",
+            "saturday": "Saturday: By appointment only"
+        },
+        "form": {
+            "name": "Full Name *",
+            "namePlaceholder": "Your name",
+            "email": "Professional Email *",
+            "emailPlaceholder": "your@email.com",
+            "phone": "Phone",
+            "phonePlaceholder": "+221 ...",
+            "projectType": "Project Type",
+            "types": {
+                "luxury": "Luxury Residential",
+                "commercial": "Commercial / Offices",
+                "interior": "Interior Design",
+                "urban": "Urban Planning / Development",
+                "other": "Other"
+            },
+            "message": "Describe your project *",
+            "messagePlaceholder": "Tell us about your vision, location, and expectations...",
+            "estimate": "I would like to receive a preliminary estimated quote",
+            "submit": "Send my Request",
+            "sending": "Sending...",
+            "success": "Thank You!",
+            "successMsg": "Your message has been sent successfully! We will contact you shortly.",
+            "successSimulation": "(Simulation) Message sent successfully!",
+            "errorMsg": "Error while sending.",
+            "unexpectedError": "An unexpected error occurred.",
+            "sendAnother": "Send another message"
+        }
+    },
+    "portfolio": {
+        "searchPlaceholder": "Search a project...",
+        "categories": {
+            "all": "All",
+            "residential": "Residential",
+            "commercial": "Commercial",
+            "interior": "Interior",
+            "landscape": "Landscape Architecture",
+            "other": "Others"
+        },
+        "loading": "Loading projects...",
+        "viewProject": "View project",
+        "loadMore": "Load more projects"
+    },
+    "feedback": {
+        "title": "Give your feedback",
+        "subtitle": "What do you think about project",
+        "ratingLabel": "Your Rating:",
+        "namePlaceholder": "Your Name",
+        "commentPlaceholder": "Your opinion on architecture, design or innovation...",
+        "submit": "Send my feedback",
+        "sending": "Sending...",
+        "successMsg": "Thank you for your feedback!",
+        "errorMsg": "An error occurred.",
+        "unexpectedError": "Unable to send your feedback.",
+        "sendAnother": "Give another feedback",
+        "rateRequired": "Please select a rating."
+    },
+    "servicesPage": {
+        "heroEyebrow": "Our Expertise",
+        "heroTitle": "Tailored",
+        "heroTitleEmphasis": "Services",
+        "heroLead": "NAAV offers comprehensive support, from initial design to final delivery, ensuring absolute aesthetic and technical coherence.",
+        "expertise": {
+            "items": [
+                {
+                    "title": "Architectural Design",
+                    "desc": "From sketch to execution, we design structures that redefine contemporary African aesthetics.",
+                    "features": [
+                        "Prestige Residences",
+                        "Hotel Complexes",
+                        "Institutional Buildings"
+                    ]
+                },
+                {
+                    "title": "Interior Design",
+                    "desc": "We create harmonious interior spaces, blending modern luxury with refined local craftsmanship.",
+                    "features": [
+                        "Space Planning",
+                        "Art Curation",
+                        "Custom Furniture"
+                    ]
+                },
+                {
+                    "title": "3D Visualization & VR",
+                    "desc": "Total immersion in your future projects through photorealistic renderings and virtual tours.",
+                    "features": [
+                        "HD Renderings",
+                        "3D Animations",
+                        "VR Experiences"
+                    ]
+                },
+                {
+                    "title": "Urbanism & Consulting",
+                    "desc": "Development of sustainable urban strategies and planning of smart neighborhoods.",
+                    "features": [
+                        "Masterplanning",
+                        "Impact Analysis",
+                        "Urban Regeneration"
+                    ]
+                }
+            ]
+        },
+        "methodology": {
+            "eyebrow": "Methodology",
+            "title": "Our Creative",
+            "titleEmphasis": "Process",
+            "steps": [
+                {
+                    "step": "01",
+                    "title": "Diagnostic & Vision",
+                    "desc": "Site analysis, understanding your needs and defining the initial architectural concept."
+                },
+                {
+                    "step": "02",
+                    "title": "Sketches & Modeling",
+                    "desc": "Development of early forms and 3D visualization to validate the artistic direction."
+                },
+                {
+                    "step": "03",
+                    "title": "Technical Development",
+                    "desc": "Detailed plans, choice of materials and integration of sustainable solutions."
+                },
+                {
+                    "step": "04",
+                    "title": "Monitoring & Execution",
+                    "desc": "Rigorous support throughout the construction phase to guarantee excellence."
+                }
+            ]
+        }
     }
 }
