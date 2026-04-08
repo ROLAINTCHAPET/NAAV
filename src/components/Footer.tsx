@@ -1,8 +1,12 @@
+"use client";
+
 import Link from 'next/link';
 import styles from './Footer.module.css';
 import { useLanguage } from '@/context/LanguageContext';
 
 const Footer = () => {
+    const { t } = useLanguage(); // ✅ correction
+
     return (
         <footer className={styles.footer}>
             <div className={styles.container}>
@@ -34,6 +38,7 @@ const Footer = () => {
                                 <li><Link href="/contact">{t('nav.contact')}</Link></li>
                             </ul>
                         </div>
+
                         <div className={styles.col}>
                             <h4>Expertise</h4>
                             <ul>
@@ -43,6 +48,7 @@ const Footer = () => {
                                 <li><Link href="/services#conseil">Conseil</Link></li>
                             </ul>
                         </div>
+
                         <div className={styles.col}>
                             <h4>Contact</h4>
                             <ul>

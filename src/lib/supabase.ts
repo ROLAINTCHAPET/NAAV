@@ -93,13 +93,14 @@ export async function getProjectById(id: string) {
     return data;
 }
 export async function getDashboardCounts() {
-    if (!supabase) return { projects: 0, articles: 0, team: 0, testimonials: 0 };
+    if (!supabase) return { projects: 0, articles: 0, team: 0, testimonials: 0, partners: 0 };
 
-    const [projects, articles, team, testimonials] = await Promise.all([
+    const [projects, articles, team, testimonials, partners] = await Promise.all([
         supabase.from('projects').select('*', { count: 'exact', head: true }),
         supabase.from('articles').select('*', { count: 'exact', head: true }),
         supabase.from('team_members').select('*', { count: 'exact', head: true }),
         supabase.from('testimonials').select('*', { count: 'exact', head: true }),
+        supabase.from('partners').select('*', { count: 'exact', head: true }),
     ]);
 
     return {
@@ -107,5 +108,16 @@ export async function getDashboardCounts() {
         articles: articles.count || 0,
         team: team.count || 0,
         testimonials: testimonials.count || 0,
+        partners: partners.count || 0,
     };
+}
+
+export async function getPartners() {
+    if (!supabase) return [];
+    const { data } = await supabase
+        .from('partners')
+        .select('*')
+        .eq('is_active', true)
+        .order('created_at', { ascending: true });
+    return data || [];
 }

@@ -1,4 +1,3 @@
-import Script from 'next/script';
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -9,23 +8,36 @@ import { LanguageProvider } from "@/context/LanguageContext";
 
 export const metadata: Metadata = {
   title: "NAAV — New African Architecture Vision",
-  description: "Cabinet d'architecture contemporaine redéfinissant le paysage urbain africain par l'innovation et le respect de l'héritage.",
+  description:
+    "Cabinet d'architecture contemporaine redéfinissant le paysage urbain africain par l'innovation et le respect de l'héritage.",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="fr" suppressHydrationWarning>
       <head>
-        <Script
-          id="theme-detection"
-          src="/scripts/theme.js"
-          strategy="beforeInteractive"
+        {/* Script propre pour le thème */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var theme = localStorage.getItem('theme');
+                  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                  if (!theme && prefersDark) theme = 'dark';
+                  if (!theme) theme = 'light';
+                  document.documentElement.setAttribute('data-theme', theme);
+                } catch (e) {}
+              })();
+            `,
+          }}
         />
       </head>
+
       <body>
         <ThemeProvider>
           <LanguageProvider>

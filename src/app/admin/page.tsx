@@ -7,6 +7,7 @@ import {
     MessageSquare,
     FolderKanban,
     PenTool,
+    Handshake,
     Save,
     X
 } from 'lucide-react';
@@ -18,7 +19,8 @@ export default function AdminDashboard() {
         projects: 0,
         articles: 0,
         team: 0,
-        testimonials: 0
+        testimonials: 0,
+        partners: 0
     });
     const [loading, setLoading] = useState(true);
 
@@ -85,8 +87,18 @@ export default function AdminDashboard() {
                     <div className={styles.cardCount}>{loading ? '...' : counts.testimonials}</div>
                     <div className={styles.cardTitle}>Témoignages Clients</div>
                     <div className={styles.cardActions}>
-                        {/* Removed Nouveau button as it's linked to projects now */}
                         <Link href="/admin/testimonials" className={styles.manageBtn} style={{ width: '100%', justifyContent: 'center' }}>Gérer les avis</Link>
+                    </div>
+                </div>
+
+                {/* Partners Card */}
+                <div className={styles.card}>
+                    <div className={styles.cardIcon}><Handshake size={24} /></div>
+                    <div className={styles.cardCount}>{loading ? '...' : counts.partners}</div>
+                    <div className={styles.cardTitle}>Partenaires</div>
+                    <div className={styles.cardActions}>
+                        <Link href="/admin/partners/new" className={styles.addBtn}>+ Ajouter</Link>
+                        <Link href="/admin/partners" className={styles.manageBtn}>Gérer</Link>
                     </div>
                 </div>
             </div>

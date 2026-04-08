@@ -1,3 +1,5 @@
+"use client";
+
 import Image from 'next/image';
 import styles from './Pitch.module.css';
 import { useLanguage } from '@/context/LanguageContext';

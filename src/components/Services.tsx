@@ -1,3 +1,5 @@
+"use client";
+
 import styles from './Services.module.css';
 import { useLanguage } from '@/context/LanguageContext';
 
